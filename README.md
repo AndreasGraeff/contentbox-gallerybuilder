@@ -9,4 +9,4 @@ A module for content box, the ColdFusion Content Management System, to create a 
 - delete functions
 - build gallerybuilder widget to render the gallery
 - enhance README and Docs
-
+- build function getUserDefaultEditor or inject baseContentHandler 

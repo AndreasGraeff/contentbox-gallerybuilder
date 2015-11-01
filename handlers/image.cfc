@@ -1,5 +1,8 @@
 component extends="super"
 {
+	property name="CBHelper"			inject="id:CBHelper@cb";
+	property name="editorService"		inject="id:editorService@cb";
+
 
 	function index(event,rc,prc)
 	{
@@ -33,9 +36,30 @@ component extends="super"
 
 	function editor(event, rc, prc)
 	{
+		prc.cbHelper = CBHelper;
+		// CK Editor Helper
+		prc.ckHelper = getMyPlugin(plugin="CKHelper",module="contentbox-admin");
+		prc.editors = editorService.getRegisteredEditorsMap();
+
+		// TODO, build like in baseContentHeader
+		prc.defaultEditor = "ckeditor";//getUserDefaultEditor( prc.oAuthor );
+		prc.cbAdminRoot = getContextRoot() & event.getModuleRoot('contentbox-admin') & "/views";
+		prc.oEditorDriver = editorService.getEditor(prc.defaultEditor);
+
+		prc.markups = editorService.getRegisteredMarkups();
+
 		prc.image = imageEntity.get(event.getValue("image_id", 0));
 		prc.gallery = galleryEntity.get(event.getValue("gallery_id", 0));
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
+
+		// CKEditor EntryPoints
+		prc.xehAuthorEditorSave = "#prc.cbAdminEntryPoint#.authors.changeEditor";
+		// TODO create function
+		prc.xehSlugify			= "#prc.cbAdminEntryPoint#.images.slugify";
+		prc.xehSlugCheck		= "#prc.cbAdminEntryPoint#.content.slugUnique";
+
+		prc.tabContent = true;
+		prc.tabContent_pages = true;
 		event.setView("image/editor");
 	}
 
