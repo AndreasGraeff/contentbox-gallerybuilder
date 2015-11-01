@@ -52,7 +52,7 @@ component extends="super"
 		// Linking content for CKEditor
 		//prc.image.content = prc.image.getImage();
 		//prc.image.excerpt = prc.image.getThumb();
-		prc.gallery = galleryEntity.get(event.getValue("gallery_id", 0));
+		//prc.gallery = galleryEntity.get(event.getValue("gallery_id", 0));
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
 
 		// CKEditor EntryPoints

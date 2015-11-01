@@ -14,6 +14,9 @@ component persistent="true" table="cb_gallery_builder_gallery"
 	// Constructor
 	function init() { return this; }
 
+	// TODO, remove for gallery_id? Needed to populate image editor
+	function get() { return gallery_id; }
+
 
 	array function validate()
 	{

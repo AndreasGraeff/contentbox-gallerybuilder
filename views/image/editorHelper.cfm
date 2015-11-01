@@ -2,9 +2,7 @@
 	<!--- CB GB --->
 #renderView(view="_tags/editors",module="contentbox-admin")#
 <script type="text/javascript">
-// toolbar Configuration
-var	$imageForm = $( "##imageForm" );
-
+// ckeditor toolbar Configuration
 $(document).ready( function()
 {
  	// Editor Pointers
