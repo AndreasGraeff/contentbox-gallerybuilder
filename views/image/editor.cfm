@@ -24,12 +24,7 @@
 								#html.hiddenField(name="image_id",bind=prc.image)#
 								#html.textField(name="title",bind=prc.image,label="*Title:",required="required",size="50",class="textfield",title="Title of your image")#
 								#html.textarea(name="image",bind=prc.image,label="*Image:",required="required",rows="3",title="The image", class="width98")#
-								#html.textarea(name="excerpt",value="nix drin",label="*Excerpt:",required="required",rows="3",title="The image", class="width98")#
-<!--- <a style="float: right; -moz-user-select: none;"
-								href="javascript:void(0)" title="Browse Server" hidefocus="true"
-								class="cke_dialog_ui_button" role="button"
-								aria-labelledby="cke_204_label" id="cke_205_uiElement">
-									<span id="cke_204_label" class="cke_dialog_ui_button">Browse Server</span></a> --->
+    					  <!--- #html.textarea(name="excerpt",value="nix drin",label="*Excerpt:",required="required",rows="3",title="The image", class="width98")# --->
 								#html.textarea(name="thumb",bind=prc.image,label="*Thumb:",required="required",rows="1",title="Thumb of the image", class="width98")#
 								#html.textarea(name="description",bind=prc.image,label="*Description:",required="required",rows="3",title="Description of your image", class="width98")#
 
