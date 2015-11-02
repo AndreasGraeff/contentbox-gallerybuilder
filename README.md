@@ -1,6 +1,6 @@
 # contentbox-gallerybuilder
 
-A module for content box, the ColdFusion Content Management System, to create a pagenated image gallery with lightbox support. It requires also the gallerybuilder widget. 
+A module for ContentBox, the ColdFusion based Content Management System, that creates a pagenated image gallery with Lightbox support. It also requires the gallerybuilder widget. 
 
 ##Version 0.0.1
 
