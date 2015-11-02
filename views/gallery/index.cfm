@@ -1,10 +1,4 @@
 <cfoutput>
-	<!--- <cfdump var='#getModuleSettings( "contentbox-filebrowser" ).settings.directoryroot#'>
-	<cfdump var='#getModuleSettings( "contentbox-gallerybuilder" ).entrypoint#'>
-	<cfset pp=expandpath(getModuleSettings( "contentbox-filebrowser" ).settings.directoryroot
-			& "/" & getModuleSettings( "contentbox-gallerybuilder" ).entrypoint)>
-	<cfdump var='#pp#'>
-	<cfdump var='#prc.cgp#'> --->
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">

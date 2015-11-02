@@ -49,9 +49,6 @@ component extends="super"
 		prc.markups = editorService.getRegisteredMarkups();
 
 		prc.image = imageEntity.get(event.getValue("image_id", 0));
-		// Linking content for CKEditor
-		//prc.image.content = prc.image.getImage();
-		//prc.image.excerpt = prc.image.getThumb();
 		//prc.gallery = galleryEntity.get(event.getValue("gallery_id", 0));
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
 
@@ -67,7 +64,8 @@ component extends="super"
 	}
 
 
-	function save(event,rc,prc){
+	function save(event,rc,prc)
+	{
 		var oImage = populateModel( imageEntity.get(id=rc.image_id) );
 		var oGallery = populateModel( galleryEntity.get(id=rc.gallery_id) );
 		oImage.setGallery_id(oGallery);
@@ -90,7 +88,7 @@ component extends="super"
 		{
 			flash.persistRC(exclude="event");
 			getPlugin("MessageBox").warn(messageArray=errors);
-			setNextEvent(event=prc.xehImageEditor,queryString="image_id_id=#oImage.getImage_id()#");
+			setNextEvent(event=prc.xehImageEditor,queryString="image_id=#oImage.getImage_id()#");
 		}
 	}
 }

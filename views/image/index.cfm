@@ -1,6 +1,4 @@
 <cfoutput>
-	<!--- <cfdump var="#prc.images#"> --->
-
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">

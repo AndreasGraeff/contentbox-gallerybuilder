@@ -27,6 +27,11 @@ $(document).ready( function()
 		filebrowserBrowseUrl: 'http://localhost:8888/index.cfm/cbadmin/ckfilebrowser/',
 		baseHref: 'http://localhost:8888//'
 	});
+	// get editors content
+	$('##submit').hover(function() {
+		CKEDITOR.instances.image.updateElement();
+		CKEDITOR.instances.thumb.updateElement();
+	});
 });
 </script>
 </cfoutput>

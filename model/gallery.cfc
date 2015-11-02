@@ -15,11 +15,12 @@ component persistent="true" table="cb_gallery_builder_gallery"
 	function init() { return this; }
 
 	// TODO, remove for gallery_id? Needed to populate image editor
-	function get() { return gallery_id; }
+	function get() { return this; }
 
 
 	array function validate()
 	{
+writedump(this);
 		var errors = [];
 		name				= left(name,200);
 		slug				= left(slug,200);
