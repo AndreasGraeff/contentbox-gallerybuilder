@@ -14,13 +14,11 @@
 					<ul class="nav nav-tabs">
 						<li class="active"><a href="##galleryTab" data-toggle="tab"><i class="icon-list-alt"></i> Image Details</a></li>
 					</ul>
-
 					<div class="tab-content">
 						<div class="tab-pane active" id="galleryItemTab">
 							#html.startForm(name="imageForm", action=prc.xehImageSave, novalidate="novalidate", class="form-vertical")#
 								#html.startFieldset(legend="Image")#
-								<!--- #html.options(prc.galleries, "gallery_id", "name")# --->
-								#html.select(name="gallery_id",bind=prc.image,options=html.options(prc.galleries, "gallery_id", "name"),label="*Gallery:",required="required",title="Gallery of your image")#
+								#html.select(name="gallery_id",bind=prc.image,options=html.options(values=prc.galleries, nameColumn="name", selectedValue=prc.gallery_id),label="*Gallery:",required="required",title="Gallery of your image")#
 								#html.hiddenField(name="image_id",bind=prc.image)#
 								#html.textField(name="title",bind=prc.image,label="*Title:",required="required",size="50",class="textfield",title="Title of your image")#
 								#html.textarea(name="image",id="image",bind=prc.image,label="*Image:",required="required",rows="3",title="The image")#
@@ -30,7 +28,7 @@
 								#html.checkbox(name="visible",bind=prc.image,label="Visible:",class="textfield",title="Set image visible or hidden in your gallery")#
 								<div class="form-actions">
 									<input type="submit" value="Save" class="btn btn-danger" id="submit">
-									<button class="btn" onclick="return to('#event.buildLink(prc.xehImage)#')">Cancel</button>
+									<button class="btn" onclick="return to('#prc.xehCancel#')">Cancel</button>
 								</div>
 								#html.endFieldSet()#
 

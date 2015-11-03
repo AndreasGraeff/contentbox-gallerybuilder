@@ -14,7 +14,7 @@
 						<button class="btn btn-inverse" onclick="window.location.href='#event.buildLink(prc.xehGallery)#';return false;"><i class="icon-reply"></i> Change Gallery</button>
 					<div class="buttonBar">
 						<div class="btn-group">
-							<button class="btn btn-danger" onclick="window.location.href='#event.buildLink(prc.xehImageEditor)#';return false;" title="Create new gallery item">Create Image</button>
+							<button class="btn btn-danger" onclick="window.location.href='#prc.xehCreate#';return false;" title="Create new gallery item">Create Image</button>
 						</div>
 					</div>
 					</div>

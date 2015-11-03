@@ -7,15 +7,18 @@ component extends="super"
 	function index(event,rc,prc)
 	{
 		prc.gallery = [];
+		prc.gallery_id = 0;
 		// working both with parameters gallery_id or image_id, one of it is required
 		if ( event.getValue("image_id", 0) gt 0 )
 		{
 			prc.image = imageEntity.get(event.getValue("image_id", 0));
 			prc.gallery = prc.image.getGallery_id();
+			prc.gallery_id = prc.gallery.getGallery_id();
 		}
 		else if ( event.getValue("gallery_id", 0) )
 		{
 			prc.gallery = galleryEntity.get(event.getValue("gallery_id", 0));
+			prc.gallery_id = event.getValue("gallery_id", 0);
 		}
 		// list of images
 		if ( IsDefined("prc.gallery") and IsObject(prc.gallery) )
@@ -28,6 +31,7 @@ component extends="super"
 			prc.gallery_name = "Unknown Gallery";
 			prc.images = [];
 		}
+		prc.xehCreate = event.buildLink(prc.xehImageEditor) & '/gallery_id/#prc.gallery_id#';
 		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
 		prc.imageEntity = imageEntity;
 		event.setView(view="image/index", module="contentbox-gallerybuilder");
@@ -37,19 +41,17 @@ component extends="super"
 	function editor(event, rc, prc)
 	{
 		prc.cbHelper = CBHelper;
-		// CK Editor Helper
 		prc.ckHelper = getMyPlugin(plugin="CKHelper",module="contentbox-admin");
 		prc.editors = editorService.getRegisteredEditorsMap();
-
 		// TODO, build like in baseContentHeader
 		prc.defaultEditor = "ckeditor";//getUserDefaultEditor( prc.oAuthor );
 		prc.cbAdminRoot = getContextRoot() & event.getModuleRoot('contentbox-admin') & "/views";
 		prc.oEditorDriver = editorService.getEditor(prc.defaultEditor);
-
 		prc.markups = editorService.getRegisteredMarkups();
 
 		prc.image = imageEntity.get(event.getValue("image_id", 0));
-		//prc.gallery = galleryEntity.get(event.getValue("gallery_id", 0));
+		prc.gallery_id = event.getValue("gallery_id", 0);
+		prc.gallery = galleryEntity.get(prc.gallery_id);
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
 
 		// CKEditor EntryPoints
@@ -57,7 +59,9 @@ component extends="super"
 		// TODO create function
 		prc.xehSlugify			= "#prc.cbAdminEntryPoint#.images.slugify";
 		prc.xehSlugCheck		= "#prc.cbAdminEntryPoint#.content.slugUnique";
-
+		prc.xehCancel			= event.buildLink(prc.xehImage);
+		if ( IsObject(prc.gallery) )
+			prc.xehCancel = prc.xehCancel & '/gallery_id/#event.getValue("gallery_id", 0)#';
 		prc.tabContent = true;
 		prc.tabContent_pages = true;
 		event.setView("image/editor");
