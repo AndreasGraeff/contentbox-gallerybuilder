@@ -18,13 +18,9 @@ component persistent="true" table="cb_gallery_builder_image"
 	array function validate()
 	{
 		var errors = [];
-		title				= left(title,200);
-		image				= left(image,2000);
-		thumb				= left(thumb,2000);
 		// Required
-		if ( not len(title) ) { arrayAppend(errors, "Title is required"); }
 		if ( not len(image) ) { arrayAppend(errors, "Image is required"); }
-		if ( not len(thumb) ) { arrayAppend(errors, "Thumb is required"); }
+		//if ( not len(thumb) ) { arrayAppend(errors, "Thumb is required"); }
 		return errors;
 	}
 }

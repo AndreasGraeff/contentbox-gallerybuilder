@@ -4,6 +4,8 @@ component {
 	property name="galleryEntity"		inject="entityService:gallery";
 	property name="imageEntity"			inject="entityService:image";
 	property name="settingService" 		inject="settingService@cb";
+	property name="htmlHelper" 			inject="coldbox:plugin:HTMLHelper";
+
 
 	// Coldbox module preHandler
 	function preHandler(event,action,eventArguments)
@@ -76,7 +78,22 @@ component {
 			return fullpath & DirectoryExists(fullpath);
 			//DirectoryCreate(fullpath);
 		}
-//			return fullpath;
+		//			return fullpath;
 		return "Does not exist";
+	}
+
+	private string function extractEditorContent(content)
+	{
+		// TODO
+		// extract html img src (xpath?)
+		return content;
+	}
+
+	private string function prepareEditorContent(path)
+	{
+		var content = path;
+		if ( len(path) gt 0 )
+			content = HTMLHelper.p(HTMLHelper.img(src=path));
+		return content;
 	}
 }

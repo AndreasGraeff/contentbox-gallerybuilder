@@ -46,7 +46,8 @@
 								<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
 								   title="Edit #i.getTitle()#"><i class="icon-edit icon-large"></i></a>
 								<!--- delete link  --->
-								<a title="Delete Image" href="javascript:remove('#i.getImage_id()#')" class="confirmIt textRed" data-title="Delete Gallery?"><i id="delete_#i.getImage_id()#" class="icon-trash icon-large"></i></a>
+								<!--- <a title="Delete Image" href="javascript:remove('#i.getImage_id()#')" class="confirmIt textRed"
+									data-title="Delete Gallery?"><i id="delete_#i.getImage_id()#" class="icon-trash icon-large"></i></a> --->
 							</td>
 						</tr>
 						</cfloop>
