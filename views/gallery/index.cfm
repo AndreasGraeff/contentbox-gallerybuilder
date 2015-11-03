@@ -1,10 +1,4 @@
 <cfoutput>
-	<!--- <cfdump var='#getModuleSettings( "contentbox-filebrowser" ).settings.directoryroot#'>
-	<cfdump var='#getModuleSettings( "contentbox-gallerybuilder" ).entrypoint#'>
-	<cfset pp=expandpath(getModuleSettings( "contentbox-filebrowser" ).settings.directoryroot
-			& "/" & getModuleSettings( "contentbox-gallerybuilder" ).entrypoint)>
-	<cfdump var='#pp#'>
-	<cfdump var='#prc.cgp#'> --->
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
@@ -51,7 +45,8 @@
 								<a href="#event.buildLink(prc.xehGalleryEditor)#/gallery_id/#g.getGallery_id()#"
 								   title="Edit #g.getName()#"><i class="icon-edit icon-large"></i></a>
 								<!--- delete link  --->
-								<a title="Delete Gallery" href="javascript:remove('#g.getGallery_id()#')" class="confirmIt textRed" data-title="Delete Gallery?"><i id="delete_#g.getGallery_id()#" class="icon-trash icon-large"></i></a>
+								<!--- <a title="Delete Gallery" href="javascript:remove('#g.getGallery_id()#')" class="confirmIt textRed"
+									data-title="Delete Gallery?"><i id="delete_#g.getGallery_id()#" class="icon-trash icon-large"></i></a> --->
 							</td>
 						</tr>
 						</cfloop>

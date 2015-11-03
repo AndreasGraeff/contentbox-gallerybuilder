@@ -1,6 +1,4 @@
 <cfoutput>
-	<!--- <cfdump var="#prc.images#"> --->
-
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
@@ -16,7 +14,7 @@
 						<button class="btn btn-inverse" onclick="window.location.href='#event.buildLink(prc.xehGallery)#';return false;"><i class="icon-reply"></i> Change Gallery</button>
 					<div class="buttonBar">
 						<div class="btn-group">
-							<button class="btn btn-danger" onclick="window.location.href='#event.buildLink(prc.xehImageEditor)#';return false;" title="Create new gallery item">Create Image</button>
+							<button class="btn btn-danger" onclick="window.location.href='#prc.xehCreate#';return false;" title="Create new gallery item">Create Image</button>
 						</div>
 					</div>
 					</div>
@@ -48,7 +46,8 @@
 								<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
 								   title="Edit #i.getTitle()#"><i class="icon-edit icon-large"></i></a>
 								<!--- delete link  --->
-								<a title="Delete Image" href="javascript:remove('#i.getImage_id()#')" class="confirmIt textRed" data-title="Delete Gallery?"><i id="delete_#i.getImage_id()#" class="icon-trash icon-large"></i></a>
+								<!--- <a title="Delete Image" href="javascript:remove('#i.getImage_id()#')" class="confirmIt textRed"
+									data-title="Delete Gallery?"><i id="delete_#i.getImage_id()#" class="icon-trash icon-large"></i></a> --->
 							</td>
 						</tr>
 						</cfloop>
