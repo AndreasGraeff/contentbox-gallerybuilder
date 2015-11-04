@@ -7,6 +7,7 @@
 				Galleries
 			</div>
 			<div class="body">
+
 				#getPlugin("MessageBox").renderit()#
 
 				<div class="well well-small">

@@ -82,14 +82,23 @@ component {
 		return "Does not exist";
 	}
 
+
 	private string function extractEditorContent(content)
 	{
-		// TODO
-		// extract html img src (xpath?)
-		return content;
+		//return "/index.cfm/__media/gallery/am-wasser/TN_02_034_DSC_6999.jpg";
+		var src = "";
+		var p = "";
+		try {
+			// if the values of editorimage are not in this format, we return ""
+			p = XmlSearch(content, "p");
+			src = p[1].xmlchildren[1].xmlAttributes.src;
+		}
+		catch (any except){};
+		return src;
 	}
 
-	private string function prepareEditorContent(path)
+
+	public string function prepareEditorContent(path)
 	{
 		var content = path;
 		if ( len(path) gt 0 )

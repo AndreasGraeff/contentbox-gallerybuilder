@@ -8,7 +8,7 @@ $(document).ready( function()
  	// Editor Pointers
 	$imageForm = $( "##imageForm" );
 	setupEditors( $imageForm, true, '#event.buildLink( prc.xehImageSave )#' );
-	var ckImageOnlyToolbar = $.parseJSON( '[{"name":"insert","items":["Image"]}]' );
+	var ckImageOnlyToolbar = $.parseJSON( '[{"name":"document","items":["Image","-","Source"]}]' );
 	var $image				= $imageForm.find("##image");
 	var $thumb				= $imageForm.find("##thumb");
 	// Active Image

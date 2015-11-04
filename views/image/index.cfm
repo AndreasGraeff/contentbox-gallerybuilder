@@ -1,4 +1,9 @@
 <cfoutput>
+	<style>
+	.gallery-builder-thumb img {
+	height: 50px;
+	}
+	</style>
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
@@ -8,6 +13,8 @@
 			</div>
 
 			<div class="body">
+
+				#getPlugin("MessageBox").renderIt()#
 
 				<div class="well well-small">
 					<div class="lead">
@@ -37,10 +44,10 @@
 							<td>
 								<a class="hand-cursor" href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
 								   title="Edit #i.getTitle()#">#i.getTitle()#</a></td>
-							<td>#i.getThumb()#</td>
+							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").thumbnail(i.getThumb())#</td>
 							<td>#i.getDescription()#</td>
 							<td>#i.getImage_date()#</td>
-							<td>#i.getVisible()#</td>
+							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").boolean(i.getVisible())#</td>
 							<td class="center">
 								<!--- edit link --->
 								<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
