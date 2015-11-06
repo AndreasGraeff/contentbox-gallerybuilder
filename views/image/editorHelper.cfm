@@ -1,5 +1,4 @@
 <cfoutput>
-	<!--- CB GB --->
 #renderView(view="_tags/editors",module="contentbox-admin")#
 <script type="text/javascript">
 // ckeditor toolbar Configuration
@@ -8,7 +7,7 @@ $(document).ready( function()
  	// Editor Pointers
 	$imageForm = $( "##imageForm" );
 	setupEditors( $imageForm, true, '#event.buildLink( prc.xehImageSave )#' );
-	var ckImageOnlyToolbar = $.parseJSON( '[{"name":"insert","items":["Image"]}]' );
+	var ckImageOnlyToolbar = $.parseJSON( '[{"name":"document","items":["Source","-","Image"]}]' );
 	var $image				= $imageForm.find("##image");
 	var $thumb				= $imageForm.find("##thumb");
 	// Active Image

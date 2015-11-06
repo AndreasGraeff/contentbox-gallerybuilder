@@ -23,7 +23,8 @@ component extends="super"
 	}
 
 
-	function save(event,rc,prc){
+	function save(event,rc,prc)
+	{
 		var oGallery = populateModel( galleryEntity.get(id=rc.gallery_id) );
 		if ( oGallery.getGallery_id() eq "" )
 		{
@@ -50,6 +51,31 @@ component extends="super"
 			getPlugin("MessageBox").warn(messageArray=errors);
 			setNextEvent(event=prc.xehGalleryEditor,queryString="gallery_id=#oGallery.getGallery_id()#");
 		}
+	}
+
+
+	function delete(event,rc,prc)
+	{
+		var oGallery	= galleryEntity.get( rc.gallery_id );
+		if( IsNull(oGallery) )
+		{
+			getPlugin("MessageBox").setMessage("warning", "Invalid Formular detected!");
+		}
+		else
+		{
+			// Test for Images
+			oImages = imageEntity.list(criteria={gallery_id=oGallery});
+			if ( IsNull(oImages) )
+			{
+				galleryEntity.delete( oGallery );
+				getPlugin("MessageBox").setMessage("info", "Gallery Deleted!");
+			}
+			else
+			{
+				getPlugin("MessageBox").setMessage("error", "Error Deleting Gallery!&lt;br&gt;Gallery Contains Images!");
+			}
+		}
+		setNextEvent(prc.xehGallery);
 	}
 
 

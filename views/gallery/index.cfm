@@ -1,4 +1,7 @@
 <cfoutput>
+	<cfif isdefined("prc.galleryEntity")>
+	<cfdump var="#prc.galleryEntity#">
+	</cfif>
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
@@ -7,7 +10,11 @@
 				Galleries
 			</div>
 			<div class="body">
+
 				#getPlugin("MessageBox").renderit()#
+
+				#html.startForm(name="galleriesForm",action=prc.xehGalleryDelete)#
+				#html.hiddenField(name="gallery_id",value="")#
 
 				<div class="well well-small">
 					<div class="buttonBar">
@@ -34,19 +41,18 @@
 						<tr>
 							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getName()#</a></td>
-							<td>#g.getSlug()#</td>
+							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
+								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getSlug()#</a></td>
 							<td>#dateFormat(g.getCreated_at(),"short")# #timeFormat(g.getCreated_at(),"short")#</td>
 							<td>#g.getImages_per_page()#</td>
 							<td>#g.getImages_per_row()#</td>
 							<td>#g.getImages_per_column()#</td>
-							<td>#g.getUse_lightbox()#</td>
+							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").boolean(g.getUse_lightbox())#</td>
 							<td class="center">
-								<!--- edit link --->
 								<a href="#event.buildLink(prc.xehGalleryEditor)#/gallery_id/#g.getGallery_id()#"
-								   title="Edit #g.getName()#"><i class="icon-edit icon-large"></i></a>
-								<!--- delete link  --->
-								<!--- <a title="Delete Gallery" href="javascript:remove('#g.getGallery_id()#')" class="confirmIt textRed"
-									data-title="Delete Gallery?"><i id="delete_#g.getGallery_id()#" class="icon-trash icon-large"></i></a> --->
+								   title="Edit Gallery"><i class="icon-edit icon-large"></i></a>
+								<a title="Delete Gallery" href="javascript:deleteGallery(#g.getGallery_id()#)" class="confirmIt textRed"
+									data-title="Delete Gallery?"><i id="delete_#g.getGallery_id()#" class="icon-trash icon-large"></i></a>
 							</td>
 						</tr>
 						</cfloop>

@@ -16,15 +16,14 @@ component {
 		// get module root
 		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
 
-		// if data isn't setup, redirect user
+		// redirect user if ORM tables are not created
 		if ( event.getCurrentEvent() NEQ "contentbox-gallerybuilder:gallery.doORMReload" and not isORMLoaded() )
 		{
-			//getPlugin("MessageBox").setMessage("warning","Module installation is not fineshed, please reload ORM!");
-			// TODO: better redirect, buttons are active -> error !, message does not disapear after ORM-Reload
 			setNextEvent("cbGalleryBuilder.gallery.doORMReload");
 		}
+		// TODO
 		// create gallery path if not done
-		checkGalleryPath();
+		//checkGalleryPath();
 
 		// exit points
 		prc.xehGallery			= "cbGalleryBuilder.gallery.index";
@@ -34,6 +33,8 @@ component {
 		prc.xehGallerySave 		= "cbGalleryBuilder.gallery.save";
 		prc.xehImageSave 		= "cbGalleryBuilder.image.save";
 		prc.xehSettingsSave		= "cbGalleryBuilder.settings.save";
+		prc.xehGalleryDelete	= "cbGalleryBuilder.gallery.delete";
+		prc.xehImageDelete		= "cbGalleryBuilder.image.delete";
 
 		// TODO
 		//check login and redirect is needed.
@@ -82,14 +83,23 @@ component {
 		return "Does not exist";
 	}
 
+
 	private string function extractEditorContent(content)
 	{
-		// TODO
-		// extract html img src (xpath?)
-		return content;
+		//return "/index.cfm/__media/gallery/am-wasser/TN_02_034_DSC_6999.jpg";
+		var src = "";
+		var p = "";
+		try {
+			// if the values of editorimage are not in this format, we return ""
+			p = XmlSearch(content, "p");
+			src = p[1].xmlchildren[1].xmlAttributes.src;
+		}
+		catch (any except){};
+		return src;
 	}
 
-	private string function prepareEditorContent(path)
+
+	public string function prepareEditorContent(path)
 	{
 		var content = path;
 		if ( len(path) gt 0 )

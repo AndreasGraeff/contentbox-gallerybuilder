@@ -20,7 +20,6 @@ component persistent="true" table="cb_gallery_builder_gallery"
 
 	array function validate()
 	{
-writedump(this);
 		var errors = [];
 		name				= left(name,200);
 		slug				= left(slug,200);
