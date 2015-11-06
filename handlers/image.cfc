@@ -55,12 +55,10 @@ component extends="super"
 		prc.gallery_id = event.getValue("gallery_id", 0);
 		prc.gallery = galleryEntity.get(prc.gallery_id);
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
-
 		// CKEditor EntryPoints
 		prc.xehAuthorEditorSave = "#prc.cbAdminEntryPoint#.authors.changeEditor";
-		// TODO create functions
 		prc.xehSlugify			= "#prc.cbAdminEntryPoint#.images.slugify";
-		prc.xehSlugCheck		= "#prc.cbAdminEntryPoint#.images.slugUnique";
+		prc.xehSlugCheck		= "#prc.cbAdminEntryPoint#.content.slugUnique";
 		prc.xehCancel			= event.buildLink(prc.xehImage);
 		if ( IsObject(prc.gallery) )
 			prc.xehCancel = prc.xehCancel & '/gallery_id/#event.getValue("gallery_id", 0)#';
