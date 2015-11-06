@@ -16,6 +16,9 @@
 
 				#getPlugin("MessageBox").renderIt()#
 
+				#html.startForm(name="imagesForm",action=prc.xehImageDelete)#
+				#html.hiddenField(name="image_id",value="")#
+
 				<div class="well well-small">
 					<div class="lead">
 						<button class="btn btn-inverse" onclick="window.location.href='#event.buildLink(prc.xehGallery)#';return false;"><i class="icon-reply"></i> Change Gallery</button>
@@ -49,17 +52,16 @@
 							<td>#i.getImage_date()#</td>
 							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").boolean(i.getVisible())#</td>
 							<td class="center">
-								<!--- edit link --->
 								<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
 								   title="Edit #i.getTitle()#"><i class="icon-edit icon-large"></i></a>
-								<!--- delete link  --->
-								<!--- <a title="Delete Image" href="javascript:remove('#i.getImage_id()#')" class="confirmIt textRed"
-									data-title="Delete Gallery?"><i id="delete_#i.getImage_id()#" class="icon-trash icon-large"></i></a> --->
+								<a title="Delete Image" href="javascript:deleteImage('#i.getImage_id()#')" class="confirmIt textRed"
+									data-title="Delete Image?"><i id="delete_#i.getImage_id()#" class="icon-trash icon-large"></i></a>
 							</td>
 						</tr>
 						</cfloop>
 					</tbody>
 				</table>
+				#html.endForm()#
 			</div>
 		</div>
 	</div>

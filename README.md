@@ -5,11 +5,11 @@ A module for ContentBox, the ColdFusion based Content Management System, that cr
 ##Version 0.0.1
 
 ##TODO
-- display message after save image
-- show scaled thumb in image/index, add css 
 - delete functions
+- oAuthor.isLoaded in super.cfc
 - build gallerybuilder widget to render the gallery
 - enhance README and Docs
 - build function getUserDefaultEditor or inject baseContentHandler 
 - checkGalleryPath
+- slugify gallery and image
 - automatically rename paths after change setting or slug  

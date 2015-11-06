@@ -6,7 +6,7 @@ component singleton
 	public string function boolean(value)
 	{
 		if ( value )
-			return "&##10003";
+			return "&##10004";
 		else
 			return "-";
 	}
