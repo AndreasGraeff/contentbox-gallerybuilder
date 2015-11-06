@@ -21,10 +21,8 @@ component {
 		{
 			setNextEvent("cbGalleryBuilder.gallery.doORMReload");
 		}
-		// TODO
 		// create gallery path if not done
 		//checkGalleryPath();
-
 		// exit points
 		prc.xehGallery			= "cbGalleryBuilder.gallery.index";
 		prc.xehImage			= "cbGalleryBuilder.image.index";
@@ -35,23 +33,24 @@ component {
 		prc.xehSettingsSave		= "cbGalleryBuilder.settings.save";
 		prc.xehGalleryDelete	= "cbGalleryBuilder.gallery.delete";
 		prc.xehImageDelete		= "cbGalleryBuilder.image.delete";
-
-		// TODO
-		//check login and redirect is needed.
-		/*if(!prc.oAuthor.isLoaded()){
+		// check if user is loged in
+		if ( not prc.oAuthor.isLoaded() )
+		{
 			getPlugin("MessageBox").setMessage("warning","Please login!");
 			setNextEvent(prc.xehLogin);
-		}*/
-
-		// use the CB admin layout
+		}
 		event.setLayout(name="admin", module="contentbox-admin");
-		// tab control
 		prc.tabModules = true;
 		prc.tabModules_cbGalleryBuilder = true;
 	}
 
 
-	// help function to detect if ORM is loaded
+	function slugify(event,rc,prc)
+	{
+		event.renderData(data=HTMLHelper.slugify( rc.slug ),type="plain");
+	}
+
+
 	public Boolean function isORMLoaded()
 	{
 		try
@@ -64,29 +63,23 @@ component {
 	}
 
 
-	// TODO with setting
-	public any function checkGalleryPath()
+	public void function checkGalleryPath()
 	{
 		var fullpath = getModuleSettings( "contentbox-filebrowser" ).settings.directoryroot;
 		var objSetting = settingService.findWhere( { name="gallery_builder" } );
 		var settings = deserializeJSON(objSetting.getValue());
 		fullpath = fullpath & "/" & settings.GALLERY_PATH;
-		//crudSetting = serializeJSON({"gallery_path"=rc.gallery_path});
-		//newProperty = deserializeJSON(crudSetting);
-		//fullpath = fullpath & deserializeJSON(jsonSetting);
-		if ( DirectoryExists(fullpath) )
+		if ( not DirectoryExists(fullpath) )
 		{
-			return fullpath & DirectoryExists(fullpath);
-			//DirectoryCreate(fullpath);
+			DirectoryCreate(fullpath);
+			getPlugin("MessageBox").setMessage("info","Gallery Path Created!");
 		}
-		//			return fullpath;
-		return "Does not exist";
 	}
 
 
+	// should only be used by handlers
 	private string function extractEditorContent(content)
 	{
-		//return "/index.cfm/__media/gallery/am-wasser/TN_02_034_DSC_6999.jpg";
 		var src = "";
 		var p = "";
 		try {

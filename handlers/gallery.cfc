@@ -1,9 +1,9 @@
 component extends="super"
 {
 
-	// default handler for contentbox-gallerybuilder
-	function index(event,rc,prc){
-		prc.cgp = checkGalleryPath();
+	function index(event,rc,prc)
+	{
+		checkGalleryPath();
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
 		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
 		event.setView(view="gallery/index", module="contentbox-gallerybuilder");
@@ -13,12 +13,12 @@ component extends="super"
 	function editor(event, rc, prc)
 	{
 		prc.gallery = galleryEntity.get(event.getValue("gallery_id", 0));
-		prc.images_per_page = "3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30";
-		prc.images_in_table = "1,2,3,4,5,6,7,8,9,10";
-		/*for ( i=1; i=3; i=i+1)
-		{
-			items_per_page = ListAppend(items_per_page, i, ",");
-		}*/
+		prc.images_in_table = "";
+		for ( i = 1; i lte 10; i=i+1 )
+			prc.images_in_table = ListAppend(prc.images_in_table, i, ",");
+		prc.images_per_page = "";
+		for ( i=2; i lte 30; i=i+1 )
+			prc.images_per_page = ListAppend(prc.images_per_page, i, ",");
 		event.setView("gallery/editor");
 	}
 
@@ -63,7 +63,7 @@ component extends="super"
 		}
 		else
 		{
-			// Test for Images
+			// test for images in gallery
 			oImages = imageEntity.list(criteria={gallery_id=oGallery});
 			if ( IsNull(oImages) )
 			{

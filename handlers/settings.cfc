@@ -6,6 +6,7 @@ component extends="super"
 		event.setView(view="settings/index", module="contentbox-gallerybuilder");
 	}
 
+
 	function save(event,rc,prc)
 	{
 		var crudSetting = "";
