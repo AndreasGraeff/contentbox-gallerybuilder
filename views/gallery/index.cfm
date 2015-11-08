@@ -10,7 +10,7 @@
 				Galleries
 			</div>
 			<div class="body">
-
+#prc.myhtml#
 				#getPlugin("MessageBox").renderit()#
 
 				#html.startForm(name="galleriesForm",action=prc.xehGalleryDelete)#

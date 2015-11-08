@@ -14,6 +14,7 @@ The contentbox-gallerybuilder also requires the gallerybuilder widget, please ta
 
 ##TODO
 - build gallerybuilder-widget to render the gallery
+- validators, check gallery page values
 - enhance README and Docs
 - build function getUserDefaultEditor or inject baseContentHandler 
 - automatically rename paths after change setting or slug  
