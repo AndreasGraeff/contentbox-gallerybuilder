@@ -10,7 +10,9 @@ component
 			prc.gallery = galleryEntity.findWhere({slug=arguments.slug});
 			if ( not IsNull(prc.gallery) )
 			{
-				// TODO lade daten
+				prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
+				prc.images = imageEntity.list(criteria={gallery_id=prc.gallery},asQuery=false);
+				prc.count_images = len(prc.images);
 				return renderView(view="render/gallery", module="contentbox-gallerybuilder");
 			}
 			else
