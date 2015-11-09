@@ -18,26 +18,28 @@ component
 			if ( not IsNull(prc.gallery) )
 			{
 				prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
-				prc.images = imageEntity.list(criteria={gallery_id=prc.gallery},asQuery=false);
+				images = imageEntity.list(criteria={gallery_id=prc.gallery},asQuery=false);
 				//prc.count_images = len(prc.images);
+				//prc.aref=tag.span("<<", {class="gallery-builder-page-disabled"});
 
 				//prc.Pagenation = html.Table(class="gallery-builder-pagenation");
-				if ( len(prc.images) gt prc.gallery.getImages_per_page() or 1 eq 1 )
+				if ( len(images) gt prc.gallery.getImages_per_page() or 1 eq 1 )
 				{
-					prc.page = event.getValue("page", 1);
-					if ( prc.page eq 1 )
+					page = event.getValue("page", 1);
+
+					if ( page eq 1 )
 					{
-						back = tag.span("<<", {class="gallery-builder-page-disabled"});
-						//href = "#event.buildLink(prc.xehRenderGallery)#/page/#prc.page-1#";
-						//back = tag.a(back, {href=href})
+						back = tag.span("<<", {_class="gallery-builder-page-disabled"});
+						href = "#event.getSESBaseURL()#/page/#page-1#";
+						back = tag.a(back, {href=href});
 					}
 					else
 					{
 						back = tag.span("<<", {class="gallery-builder-page-enabled"});
-						href = "#event.buildLink(prc.xehRenderGallery)#/page/#prc.page+1#";
-						back = tag.a(back, {href=href})
+						href = "#event.buildLink(prc.xehRenderGallery)#/page/#page+1#";
+						back = tag.a(back, {href=href});
 					}
-					prc.Pagenation = back & "Page #prc.page# of #len(prc.images)#";
+					prc.Pagenation = back & "Page #page# of #len(images)#";
 				}
 				else
 					prc.Pagenation = "procjjzz";
