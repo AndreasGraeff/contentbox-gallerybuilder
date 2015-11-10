@@ -1,2 +1,6 @@
 .gallery-builder-thumbnail{height:50px;}
 .gallery-builder-gallery-title{font-size:125%;}
+.gallery-builder-pagenation{height:50px;margin:5px auto 5 px auto;}
+.gallery-builder-pagenation td{margin:2px;width: 100px;}
+.gallery-builder-page-disabled{opacity:0.5;filter:alpha(opacity=50);}
+.gallery-builder-page-enabled{}

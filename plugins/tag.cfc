@@ -17,6 +17,20 @@ component singleton
 		return tag("span", content, attrs, dataAttrs);
 	}
 
+	public string function table(string content, struct attrs=structnew(), struct dataAttrs=structnew())
+	{
+		return tag("table", content, attrs, dataAttrs);
+	}
+
+	public string function td(string content, struct attrs=structnew(), struct dataAttrs=structnew())
+	{
+		return tag("td", content, attrs, dataAttrs);
+	}
+
+	public string function tr(string content, struct attrs=structnew(), struct dataAttrs=structnew())
+	{
+		return tag("tr", content, attrs, dataAttrs);
+	}
 
 	// private methods
 	private string function closetag(string name)

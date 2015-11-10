@@ -10,7 +10,7 @@
 
 #prc.Pagenation#
 
-<cfdump var="#event#">
+<!--- <cfdump var="#event#"> --->
 
 <!--- <table class="gallery-builder-gallery-table">
 

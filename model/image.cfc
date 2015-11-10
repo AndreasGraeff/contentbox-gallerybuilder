@@ -11,6 +11,7 @@ component persistent="true" table="cb_gallery_builder_image"
 	property name="description" notnull="false" length="2000" default="";
 	property name="image_date" type="string" notnull="false" index="idx_image_date";
 	property name="created_at" ormtype="timestamp" notnull="true";
+	property name="updated_at" ormtype="timestamp" notnull="false";
 	property name="visible" ormtype="boolean" notnull="true" default="true" dbdefault="1";
 
 	function init() { return this; }

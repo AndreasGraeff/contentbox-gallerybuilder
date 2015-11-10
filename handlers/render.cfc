@@ -23,23 +23,25 @@ component
 				//prc.aref=tag.span("<<", {class="gallery-builder-page-disabled"});
 
 				//prc.Pagenation = html.Table(class="gallery-builder-pagenation");
-				if ( len(images) gt prc.gallery.getImages_per_page() or 1 eq 1 )
+				if ( len(images) gt prc.gallery.getImages_per_page() )
 				{
 					page = event.getValue("page", 1);
-
-					if ( page eq 1 )
+					// TODO: URL function
+					if ( page lt 2 )
 					{
-						back = tag.span("<<", {_class="gallery-builder-page-disabled"});
-						href = "#event.getSESBaseURL()#/page/#page-1#";
-						back = tag.a(back, {href=href});
+						prev = tag.span("&lt;&lt;", {class="gallery-builder-page-disabled"});
+						next = tag.span("&gt;&gt;", {class="gallery-builder-page-enabled"});
+						href = "#event.getSESBaseURL()#?page=#page+1#";
+						next = tag.a(next, {href=href});
 					}
 					else
 					{
-						back = tag.span("<<", {class="gallery-builder-page-enabled"});
+						prev = tag.span("&lt;&lt;", {class="gallery-builder-page-enabled"});
 						href = "#event.buildLink(prc.xehRenderGallery)#/page/#page+1#";
-						back = tag.a(back, {href=href});
+						prev = tag.a(prev, {href=href});
 					}
-					prc.Pagenation = back & "Page #page# of #len(images)#";
+					center = "Page #page# of #len(images)#";
+					prc.Pagenation = tag.table(tag.TR(tag.TD(prev) & tag.td(center) & tag.td(next)), {class="gallery-builder-pagenation"});
 				}
 				else
 					prc.Pagenation = "procjjzz";
