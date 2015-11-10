@@ -19,3 +19,4 @@ The contentbox-gallerybuilder also requires the gallerybuilder widget, please ta
 - build function getUserDefaultEditor or inject baseContentHandler 
 - automatically rename paths after change setting or slug  
 - better view for image list, use ajax in gallery
+- css theme
