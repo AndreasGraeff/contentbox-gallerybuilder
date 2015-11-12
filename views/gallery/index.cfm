@@ -10,7 +10,7 @@
 				Galleries
 			</div>
 			<div class="body">
-
+#prc.myhtml#
 				#getPlugin("MessageBox").renderit()#
 
 				#html.startForm(name="galleriesForm",action=prc.xehGalleryDelete)#
@@ -29,9 +29,9 @@
 							<th>Gallery</th>
 							<th>Slug</th>
 							<th>Created</th>
-							<th>Images per Page</th>
-							<th>Images per table row</th>
-							<th>Images per table column</th>
+							<th>Images Per Page</th>
+							<th>Number Of Rows Per Page</th>
+							<th>Number Of Columns Per Page</th>
 							<th>Lightbox</th>
 							<th width="75" class="center {sorter:false}">Actions</th>
 						</tr>
@@ -45,8 +45,8 @@
 								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getSlug()#</a></td>
 							<td>#dateFormat(g.getCreated_at(),"short")# #timeFormat(g.getCreated_at(),"short")#</td>
 							<td>#g.getImages_per_page()#</td>
-							<td>#g.getImages_per_row()#</td>
-							<td>#g.getImages_per_column()#</td>
+							<td>#g.getImages_number_rows()#</td>
+							<td>#g.getImages_number_columns()#</td>
 							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").boolean(g.getUse_lightbox())#</td>
 							<td class="center">
 								<a href="#event.buildLink(prc.xehGalleryEditor)#/gallery_id/#g.getGallery_id()#"

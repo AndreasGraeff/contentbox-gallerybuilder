@@ -1,6 +1,6 @@
 component extends="super"
 {
-	property name="CBHelper"			inject="id:CBHelper@cb";
+	//property name="CBHelper"			inject="id:CBHelper@cb";
 	property name="editorService"		inject="id:editorService@cb";
 
 
@@ -33,14 +33,14 @@ component extends="super"
 		}
 		prc.xehCreate = event.buildLink(prc.xehImageEditor) & '/gallery_id/#prc.gallery_id#';
 		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
-		prc.imageEntity = imageEntity;
+		//prc.imageEntity = imageEntity;
 		event.setView(view="image/index", module="contentbox-gallerybuilder");
 	}
 
 
 	function editor(event, rc, prc)
 	{
-		prc.cbHelper = CBHelper;
+		//prc.cbHelper = CBHelper;
 		prc.ckHelper = getMyPlugin(plugin="CKHelper",module="contentbox-admin");
 		prc.editors = editorService.getRegisteredEditorsMap();
 		// TODO, build like in baseContentHeader

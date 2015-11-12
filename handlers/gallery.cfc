@@ -1,11 +1,17 @@
 component extends="super"
 {
+property name="tag"					inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
 
 	function index(event,rc,prc)
 	{
 		checkGalleryPath();
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
 		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
+
+		prc.myhtml = tag.span("nix drin");
+		prc.myhtml = tag.span("<<", {class="gallery-builder-page-enabled"}, {lightbox="click here"});
+		prc.myhtml = tag.span("<<", {class="gallery-builder-page-enabled"});
+
 		event.setView(view="gallery/index", module="contentbox-gallerybuilder");
 	}
 
@@ -17,7 +23,7 @@ component extends="super"
 		for ( i = 1; i lte 10; i=i+1 )
 			prc.images_in_table = ListAppend(prc.images_in_table, i, ",");
 		prc.images_per_page = "";
-		for ( i=2; i lte 30; i=i+1 )
+		for ( i = 1; i lte 30; i=i+1 )
 			prc.images_per_page = ListAppend(prc.images_per_page, i, ",");
 		event.setView("gallery/editor");
 	}

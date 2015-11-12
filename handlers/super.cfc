@@ -1,5 +1,6 @@
 /* super class of gallery builder */
-component {
+component
+{
 	// dependencies
 	property name="galleryEntity"		inject="entityService:gallery";
 	property name="imageEntity"			inject="entityService:image";

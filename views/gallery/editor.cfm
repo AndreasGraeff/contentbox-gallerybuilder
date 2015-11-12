@@ -27,8 +27,8 @@
 								#html.textField(name="name",bind=prc.gallery,label="*Name:",required="required",size="50",class="textfield",title="The unique name (or key for I18N) of your gallery")#
 								#html.textField(name="slug",bind=prc.gallery,label="*Slug:",required="required",size="50",class="textfield",title="The unique slug to identify your gallery (use a SEO friendly name of your gallery content).")#
 								#html.select(name="images_per_page",bind=prc.gallery,options=prc.images_per_page,label="*Images per page:",required="required",title="The number of images on a single gallery page.")#
-								#html.select(name="images_per_row",bind=prc.gallery,options=prc.images_in_table,label="*Images per table row:",title="The number of images in a table row on a single gallery page. Leave empty for a fix column value.")#
-								#html.select(name="images_per_column",bind=prc.gallery,options=prc.images_in_table,label="*Images per table column:",title="The number of images in a table column on a single gallery page. Leave empty for a fix row value.")#
+								#html.select(name="images_number_rows",bind=prc.gallery,options=prc.images_in_table,label="*Number Of Rows:",title="The number of rows in a table on a single gallery page.")#
+								#html.select(name="images_number_columns",bind=prc.gallery,options=prc.images_in_table,label="*Number Of Columns:",title="The number of columns in a table on a single gallery page.")#
 								#html.checkbox(name="use_lightbox",bind=prc.gallery,label="Use Lightbox:",class="textfield",title="Use Lightbox for your view")#
 								<div class="form-actions">
 									<input type="submit" value="Save" class="btn btn-danger">
