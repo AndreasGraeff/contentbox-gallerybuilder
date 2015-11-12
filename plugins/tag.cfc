@@ -32,13 +32,12 @@ component singleton
 		return tag("tr", content, attrs, dataAttrs);
 	}
 
-	// private methods
-	private string function closetag(string name)
+	public string function endtag(string name)
 	{
 		return "</" & name & ">";
 	}
 
-
+	// private methods
 	private string function serializeAttributes(struct attrs, string prefix="")
 	{
 		var sa = "";
@@ -50,7 +49,7 @@ component singleton
 	}
 
 
-	private string function starttag(string name)
+	public string function starttag(string name)
 	{
 		return "<" & name & ">";
 	}
@@ -59,8 +58,8 @@ component singleton
 	private string function tag(string name, string content, struct attrs, struct dataAttrs)
 	{
 		if ( StructCount(attrs) eq 0 and StructCount(dataAttrs) eq 0 )
-			return starttag(name) & content & closetag(name);
+			return starttag(name) & content & endtag(name);
 		else
-			return "<" & name & serializeAttributes(attrs) & serializeAttributes(dataAttrs, "data") & ">" & content & closetag(name);
+			return "<" & name & serializeAttributes(attrs) & serializeAttributes(dataAttrs, "data") & ">" & content & endtag(name);
 	}
 }

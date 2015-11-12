@@ -14,8 +14,9 @@ The contentbox-gallerybuilder also requires the gallerybuilder widget, please ta
 
 ##TODO
 - build gallerybuilder-widget to render the gallery
-- validators, check gallery page values
+- validators, check gallery page values, automatic calculation of images per page
 - enhance README and Docs
+- change formatHelper: use tag.cfc instead of htmlhelper.cfc
 - build function getUserDefaultEditor or inject baseContentHandler 
 - automatically rename paths after change setting or slug  
 - better view for image list, use ajax in gallery
