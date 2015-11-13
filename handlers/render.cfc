@@ -19,7 +19,7 @@ component
 			if ( not IsNull(prc.gallery) )
 			{
 				prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
-				var images = imageEntity.list(criteria={gallery_id=prc.gallery},asQuery=false);
+				var images = imageEntity.list(criteria={gallery_id=prc.gallery, visible=true},asQuery=false);
 				// 1. pagenation
 				var linkto = event.buildLink(linkto=#event.getCurrentRoutedURL()#) & "?page=";
 				if ( len(images) gt prc.gallery.getImages_per_page() )
@@ -58,22 +58,37 @@ component
 				var images_per_page = prc.gallery.getImages_per_page();
 				var number_rows = prc.gallery.getImages_number_rows();
 				var number_columns = prc.gallery.getImages_number_columns();
+				var idx = 0;
 				for ( i=1; i lte len(images); i=i+1 )
 				{
-					// TODO page
-					//if ( i gt (page-1)*images_per_page  and (page-1)*i lt images_per_page )
 					if ( (i gt (page-1)*images_per_page) and (i lte page*images_per_page) )
 					{
 						if ( this.checkOpenRow(i, len(images), page, images_per_page, number_rows, number_columns) )
-							content = content & tag.starttag("tr") & i & len(images) & images_per_page & number_rows & number_columns;
+							content = content & tag.starttag("tr");
 						if ( prc.gallery.getUse_lightbox() )
-							content = content & tag.td("Die Tabelle #i# mit den Bildern und Lightbox");
+						{
+							img = tag.img({src=images[i].getThumb()});
+							content = content & tag.td(tag.a(img, {href=images[i].getImage(),alt=images[i].getDescription(), title=alt=images[i].getDescription()}));
+						}
+
 						else
-							content = content & tag.td("Die Tabelle #i# mit den Bildern ohne Lightbox");
+							content = content & tag.td(tag.img({src=images[i].getThumb()}));
 						if ( this.checkCloseRow(i, len(images), page, images_per_page, number_rows, number_columns) )
 							content = content & tag.endtag("tr");
+						idx = idx + 1;
 					}
 				}
+				//content = content & idx;
+				// row not completed, i must be reseted (+1 after loop)
+				/*i = len(images);
+				if ( i mod number_columns gt 0 )
+				{
+					for ( j=0; j lt (i mod number_columns); j=j+1 )
+					{
+						content = content & tag.td("Die leere Zelle #i# mit den Bildern ohne Lightbox");
+						content = content & tag.endtag("tr");
+					}
+				}*/
 				prc.TableImages = tag.table(content, {class="gallery-builder-table-images"})
 				return renderView(view="render/gallery", module="contentbox-gallerybuilder");
 			}
