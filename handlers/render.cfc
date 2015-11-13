@@ -62,7 +62,7 @@ component
 				{
 					// TODO page
 					//if ( i gt (page-1)*images_per_page  and (page-1)*i lt images_per_page )
-					if ( i lt 3 )
+					if ( (i gt (page-1)*images_per_page) and (i lte page*images_per_page) )
 					{
 						if ( this.checkOpenRow(i, len(images), page, images_per_page, number_rows, number_columns) )
 							content = content & tag.starttag("tr") & i & len(images) & images_per_page & number_rows & number_columns;
@@ -93,7 +93,7 @@ component
 	{
 		if ( per_page eq 1 )
 			return true;
-		else if ( per_page % idx eq 1 )
+		else if ( idx mod number_columns eq 1 )
 			return true;
 		else
 			return false;
@@ -104,7 +104,7 @@ component
 	{
 		if ( per_page eq 1 )
 			return true;
-		else if ( number_columns % idx eq 0 )
+		else if ( idx mod number_columns eq 0 )
 			return true;
 		else
 			return false;

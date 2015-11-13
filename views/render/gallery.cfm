@@ -10,17 +10,4 @@
 
 #prc.Pagenation#
 
-<!--- <cfdump var="#event#"> --->
-
-<!--- <table class="gallery-builder-gallery-table">
-
-	<cfloop array="#prc.images#" index="g">
-		<td><div class="divImage">
-			<a href="images/02_036_DSC_7672.jpg" rel="lightboxgalery" title="Eine Ringelnatter schwimmt von Ufer zu Ufer, Nationaal Park De Weerribben, NL. (30.05.2014)" alt="Eine Ringelnatter schwimmt von Ufer zu Ufer, Nationaal Park De Weerribben, NL. (30.05.2014)">
-			<img src="images/TN_02_036_DSC_7672.jpg" class="imgGalery"></a></div></td>
-
-		</td>
-	</cfloop>
-</table> --->
-
 </cfoutput>
