@@ -19,6 +19,12 @@ component extends="super"
 			newProperty = deserializeJSON(crudSetting);
 			structAppend(newSettings, newProperty);
 		}
+		if ( structKeyExists(rc,"size_image") )
+		{
+			crudSetting = serializeJSON({"size_image"=rc.size_image});
+			newProperty = deserializeJSON(crudSetting);
+			structAppend(newSettings, newProperty);
+		}
 		var currentSettings = deserializeJSON(objSetting.getValue());
 		// append (overwrite) old settings
 		structAppend(currentSettings, newSettings);
