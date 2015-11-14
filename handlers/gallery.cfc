@@ -5,7 +5,7 @@ property name="tag"					inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
 	function index(event,rc,prc)
 	{
 		checkGalleryPath();
-		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
+		prc.galleries = galleryEntity.list(sortOrder="gallery_id ASC",asQuery=false);
 		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
 
 		prc.myhtml = tag.span("nix drin");
