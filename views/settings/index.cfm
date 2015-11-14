@@ -21,6 +21,7 @@
 						#html.startForm(name="settingsForm", action=prc.xehSettingsSave, novalidate="novalidate")#
 							#html.startFieldset(legend="Settings")#
 							#html.textField(name="GALLERY_PATH", label="*Gallery Path:", value="#prc.settings.GALLERY_PATH#", class="textfield large", title="Name of the gallery path, change for your SEO needs")#
+							#html.textField(name="SIZE_IMAGE", label="*Size of image/thumb in gallery page:", value="#prc.settings.SIZE_IMAGE#", class="textfield large", title="Size of the thumb image (square), take a little larger value")#
 							<div class="form-actions">
 								<input type="submit" value="Save" class="btn btn-danger">
 							</div>

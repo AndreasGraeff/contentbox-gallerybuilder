@@ -4,6 +4,7 @@ component
 	property name="imageEntity"			inject="entityService:image";
 	property name="tag"					inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
 	property name="formatHelper"		inject="coldbox:myPlugin:formatHelper@contentbox-gallerybuilder";
+	property name="settingService" 		inject="settingService@cb";
 
 
 	function gallery(event, rc, prc, slug)
@@ -13,18 +14,25 @@ component
 			arguments.slug = event.getValue("slug", "");
 		if ( arguments.slug != "" )
 		{
-			// TODO: get calling page
-			prc.xehRenderGallery = "cbGalleryBuilder.render.gallery";
 			prc.gallery = galleryEntity.findWhere({slug=arguments.slug});
 			if ( not IsNull(prc.gallery) )
 			{
 				prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
-				var images = imageEntity.list(criteria={gallery_id=prc.gallery},asQuery=false);
+				var settings = deserializeJSON(settingService.getSetting("gallery_builder"));
+				var css = "gallery-builder-table-images-td-#settings.size_image#"
+				prc.style = ".#css#{width:#settings.size_image#px;height:#settings.size_image#px;}"
+				var images = imageEntity.list(criteria={gallery_id=prc.gallery, visible=true},asQuery=false);
 				// 1. pagenation
 				var linkto = event.buildLink(linkto=#event.getCurrentRoutedURL()#) & "?page=";
+				var images_per_page = prc.gallery.getImages_per_page();
 				if ( len(images) gt prc.gallery.getImages_per_page() )
 				{
-					page = event.getValue("page", 1);
+					if ( len(images) mod images_per_page eq 0 )
+						total_pages = len(images) / images_per_page;
+					else
+						total_pages = 1 + ( len(images) - (len(images) mod images_per_page) ) / images_per_page;
+					var center = "Page #page# of #total_pages#";
+					var page = event.getValue("page", 1);
 					if ( page lt 2 )
 					{
 						prev = tag.span("&lt;&lt;", {class="gallery-builder-page-disabled"});
@@ -32,7 +40,7 @@ component
 						href = linkto & "#page+1#";
 						next = tag.a(next, {href=href});
 					}
-					else if ( page eq len(images) )
+					else if ( page eq total_pages )
 					{
 						prev = tag.span("&lt;&lt;", {class="gallery-builder-page-enabled"});
 						href = linkto & "#page-1#";
@@ -48,33 +56,46 @@ component
 						href = linkto & "#page+1#";
 						next = tag.a(next, {href=href});
 					}
-					center = "Page #page# of #len(images)#";
+
 					prc.Pagenation = tag.table(tag.TR(tag.TD(prev) & tag.td(center) & tag.td(next)), {class="gallery-builder-pagenation"});
 				}
 				else
 					prc.Pagenation = "";
 				// 2. table images
 				var content = "";
-				var images_per_page = prc.gallery.getImages_per_page();
 				var number_rows = prc.gallery.getImages_number_rows();
 				var number_columns = prc.gallery.getImages_number_columns();
 				for ( i=1; i lte len(images); i=i+1 )
 				{
-					// TODO page
-					//if ( i gt (page-1)*images_per_page  and (page-1)*i lt images_per_page )
-					if ( i lt 3 )
+					if ( (i gt (page-1)*images_per_page) and (i lte page*images_per_page) )
 					{
 						if ( this.checkOpenRow(i, len(images), page, images_per_page, number_rows, number_columns) )
-							content = content & tag.starttag("tr") & i & len(images) & images_per_page & number_rows & number_columns;
+							content = content & tag.starttag("tr");
 						if ( prc.gallery.getUse_lightbox() )
-							content = content & tag.td("Die Tabelle #i# mit den Bildern und Lightbox");
+						{
+							var img = tag.img({src=images[i].getThumb()});
+							var desc = images[i].getDescription();
+							var anquor = tag.a(img, {href=images[i].getImage(), alt=desc, title=desc});
+							content = content & tag.td(anquor, {class=css});
+						}
 						else
-							content = content & tag.td("Die Tabelle #i# mit den Bildern ohne Lightbox");
+							content = content & tag.td(tag.img({src=images[i].getImage()}));
 						if ( this.checkCloseRow(i, len(images), page, images_per_page, number_rows, number_columns) )
 							content = content & tag.endtag("tr");
 					}
 				}
-				prc.TableImages = tag.table(content, {class="gallery-builder-table-images"})
+				// check if table row is not completed,
+				var j = len(images);
+				var k = j mod number_columns;
+				if ( total_pages eq page and k gt 0 )
+				{
+					for ( l=0; l lt (number_columns-k); l=l+1 )
+					{
+						content = content & tag.td("", {class=css});
+					}
+					content = content & tag.endtag("tr");
+				}
+				prc.TableImages = tag.table(content, {class="gallery-builder-table-images"});
 				return renderView(view="render/gallery", module="contentbox-gallerybuilder");
 			}
 			else
@@ -93,7 +114,7 @@ component
 	{
 		if ( per_page eq 1 )
 			return true;
-		else if ( per_page % idx eq 1 )
+		else if ( idx mod number_columns eq 1 )
 			return true;
 		else
 			return false;
@@ -104,7 +125,7 @@ component
 	{
 		if ( per_page eq 1 )
 			return true;
-		else if ( number_columns % idx eq 0 )
+		else if ( idx mod number_columns eq 0 )
 			return true;
 		else
 			return false;

@@ -24,7 +24,7 @@ component extends="super"
 		if ( IsDefined("prc.gallery") and IsObject(prc.gallery) )
 		{
 			prc.gallery_name = "Images In Gallery #chr(34)##prc.gallery.getName()##chr(34)#";
-			prc.images = imageEntity.list(criteria={gallery_id=prc.gallery},asQuery=false);
+			prc.images = imageEntity.list(criteria={gallery_id=prc.gallery},sortOrder="image_id ASC",asQuery=false);
 		}
 		else
 		{
@@ -54,7 +54,7 @@ component extends="super"
 		prc.image.setThumb(prepareEditorContent(prc.image.getThumb()));
 		prc.gallery_id = event.getValue("gallery_id", 0);
 		prc.gallery = galleryEntity.get(prc.gallery_id);
-		prc.galleries = galleryEntity.list(sortOrder="gallery_id DESC",asQuery=false);
+		prc.galleries = galleryEntity.list(sortOrder="gallery_id ASC",asQuery=false);
 		// CKEditor EntryPoints
 		prc.xehAuthorEditorSave = "#prc.cbAdminEntryPoint#.authors.changeEditor";
 		prc.xehSlugify			= "#prc.cbAdminEntryPoint#.images.slugify";
