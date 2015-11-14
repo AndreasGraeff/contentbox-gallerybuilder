@@ -27,7 +27,12 @@ component
 				var images_per_page = prc.gallery.getImages_per_page();
 				if ( len(images) gt prc.gallery.getImages_per_page() )
 				{
-					page = event.getValue("page", 1);
+					if ( len(images) mod images_per_page eq 0 )
+						total_pages = len(images) / images_per_page;
+					else
+						total_pages = 1 + ( len(images) - (len(images) mod images_per_page) ) / images_per_page;
+					var center = "Page #page# of #total_pages#";
+					var page = event.getValue("page", 1);
 					if ( page lt 2 )
 					{
 						prev = tag.span("&lt;&lt;", {class="gallery-builder-page-disabled"});
@@ -35,7 +40,7 @@ component
 						href = linkto & "#page+1#";
 						next = tag.a(next, {href=href});
 					}
-					else if ( page eq len(images) )
+					else if ( page eq total_pages )
 					{
 						prev = tag.span("&lt;&lt;", {class="gallery-builder-page-enabled"});
 						href = linkto & "#page-1#";
@@ -51,11 +56,7 @@ component
 						href = linkto & "#page+1#";
 						next = tag.a(next, {href=href});
 					}
-					if ( len(images) mod images_per_page eq 0 )
-						total_pages = len(images) / images_per_page;
-					else
-						total_pages = 1 + ( len(images) - (len(images) mod images_per_page) ) / images_per_page;
-					center = "Page #page# of #total_pages#";
+
 					prc.Pagenation = tag.table(tag.TR(tag.TD(prev) & tag.td(center) & tag.td(next)), {class="gallery-builder-pagenation"});
 				}
 				else
@@ -64,7 +65,6 @@ component
 				var content = "";
 				var number_rows = prc.gallery.getImages_number_rows();
 				var number_columns = prc.gallery.getImages_number_columns();
-				var idx = 0;
 				for ( i=1; i lte len(images); i=i+1 )
 				{
 					if ( (i gt (page-1)*images_per_page) and (i lte page*images_per_page) )
@@ -73,22 +73,19 @@ component
 							content = content & tag.starttag("tr");
 						if ( prc.gallery.getUse_lightbox() )
 						{
-							img = tag.img({src=images[i].getThumb()});
-							anquor = "";
-							content = content & tag.td(tag.a(img, {href=images[i].getImage(),
-															alt=images[i].getDescription(), title=alt=images[i].getDescription()}), {class=css});
+							var img = tag.img({src=images[i].getThumb()});
+							var desc = images[i].getDescription();
+							var anquor = tag.a(img, {href=images[i].getImage(), alt=desc, title=desc});
+							content = content & tag.td(anquor, {class=css});
 						}
-
 						else
-							content = content & tag.td(tag.img({src=images[i].getThumb()}));
+							content = content & tag.td(tag.img({src=images[i].getImage()}));
 						if ( this.checkCloseRow(i, len(images), page, images_per_page, number_rows, number_columns) )
 							content = content & tag.endtag("tr");
-						idx = idx + 1;
 					}
 				}
 				// check if table row is not completed,
 				var j = len(images);
-				//prc.debugcontent = "#settings.size_image#";
 				var k = j mod number_columns;
 				if ( total_pages eq page and k gt 0 )
 				{
@@ -98,7 +95,7 @@ component
 					}
 					content = content & tag.endtag("tr");
 				}
-				prc.TableImages = tag.table(content, {class="gallery-builder-table-images"})
+				prc.TableImages = tag.table(content, {class="gallery-builder-table-images"});
 				return renderView(view="render/gallery", module="contentbox-gallerybuilder");
 			}
 			else
