@@ -4,7 +4,7 @@ contentbox-gallerybuilder is a module for ContentBox, the ColdFusion based Conte
 
 You can create image galleries with it. These galleries are automatically pagenated and they also include support for a "Lightbox" view of an image.
 
-##Version 0.80.0
+##Version 0.90.0
 
 # Installation
 
@@ -24,11 +24,9 @@ The image in your page are rendered into a html table. You can choose the number
 
 ##TODO
 - build lightbox for bootstrap
-- validators, check gallery page values, automatic calculation of images per page
 - enhance README and Docs
-- change formatHelper: use tag.cfc instead of htmlhelper.cfc
 - build function getUserDefaultEditor or inject baseContentHandler 
-- 2.0  
+- for V2.0  
 - automatically rename paths after change setting or slug
 - better view for image list, use ajax in gallery
 - css theme
