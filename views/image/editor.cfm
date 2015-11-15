@@ -25,8 +25,8 @@
 								#html.textField(name="image_date",bind=prc.image,label="Date:",size="20",class="textfield",title="Creation date")#
 								#html.checkbox(name="visible",bind=prc.image,label="Visible:",class="textfield",title="Set image visible or hidden in your gallery")#
 								<div class="form-actions">
-									<input type="submit" value="Save" class="btn btn-danger" id="submit">
 									<button class="btn" onclick="return to('#prc.xehCancel#')">Cancel</button>
+									<input type="submit" value="Save" class="btn btn-danger" id="submit">
 								</div>
 								#html.endFieldSet()#
 							#html.endForm()#
