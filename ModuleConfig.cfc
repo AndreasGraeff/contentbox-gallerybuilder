@@ -17,7 +17,7 @@ component
 		// default module settings
 		defaultSettings = {
 			GALLERY_PATH = "gallery",
-			SIZE_IMAGE = 250;
+			SIZE_IMAGE = 250
 		};
 		// SES Routes
 		routes = [
