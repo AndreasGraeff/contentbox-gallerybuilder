@@ -75,7 +75,7 @@ component
 						{
 							var img = tag.img({src=images[i].getThumb()});
 							var desc = images[i].getDescription();
-							var anquor = tag.a(img, {href=images[i].getImage(), alt=desc, title=desc});
+							var anquor = tag.a(img, {href=images[i].getImage(),alt=desc,title=desc,rel="gallerybuilder"});
 							content = content & tag.td(anquor, {class=css});
 						}
 						else

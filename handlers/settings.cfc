@@ -3,6 +3,7 @@ component extends="super"
 	function index(event,rc,prc)
 	{
 		prc.settings = deserializeJSON(settingService.getSetting("gallery_builder"));
+		prc.xehCancel = event.buildLink(prc.xehGallery);
 		event.setView(view="settings/index", module="contentbox-gallerybuilder");
 	}
 
