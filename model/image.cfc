@@ -1,10 +1,7 @@
-/* galleryItem entity */
 component persistent="true" table="cb_gallery_builder_image"
 {
 	property name="image_id" fieldtype="id" column="id" generator="identity" setter="false";
-	// 1:n relation
 	property name="gallery_id" notnull="true" cfc="contentbox.modules.contentbox-gallerybuilder.model.gallery" fieldtype="many-to-one" fkcolumn="gallery_id" lazy="true" fetch="join";
-	// props
 	property name="title" type="string" notnull="false" length="200" default="";
 	property name="thumb" type="string" notnull="true" length="200" default="";
 	property name="image" type="string" notnull="true" length="200" default="";
@@ -19,9 +16,7 @@ component persistent="true" table="cb_gallery_builder_image"
 	array function validate()
 	{
 		var errors = [];
-		// Required
 		if ( not len(image) ) { arrayAppend(errors, "Image is required"); }
-		//if ( not len(thumb) ) { arrayAppend(errors, "Thumb is required"); }
 		return errors;
 	}
 }
