@@ -19,6 +19,12 @@ component singleton
 	}
 
 
+	public string function p(string content, struct attrs=structnew(), struct dataAttrs=structnew())
+	{
+		return tag("p", content, attrs, dataAttrs);
+	}
+
+
 	public string function span(string content, struct attrs=structnew(), struct dataAttrs=structnew())
 	{
 		return tag("span", content, attrs, dataAttrs);

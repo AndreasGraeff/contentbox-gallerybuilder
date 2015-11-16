@@ -1,6 +1,6 @@
 component singleton
 {
-	property name="htmlHelper" 			inject="coldbox:plugin:HTMLHelper";
+	property name="tag" inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
 
 
 	public string function boolean(value)
@@ -14,7 +14,7 @@ component singleton
 
 	public string function thumbnail(image)
 	{
-		var thumb = htmlHelper.p(htmlHelper.img(src=image, class="gallery-builder-thumbnail"));
+		var thumb = tag.p(tag.img({src=image, class="gallery-builder-thumbnail"}));
 		return thumb;
 	}
 }

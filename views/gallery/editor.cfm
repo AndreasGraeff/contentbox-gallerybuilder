@@ -26,10 +26,11 @@
 								#html.hiddenField(name="gallery_id",bind=prc.gallery)#
 								#html.textField(name="name",bind=prc.gallery,label="*Name:",required="required",size="50",class="textfield",title="The unique name (or key for I18N) of your gallery")#
 								#html.textField(name="slug",bind=prc.gallery,label="*Slug:",required="required",size="50",class="textfield",title="The unique slug to identify your gallery (use a SEO friendly name of your gallery content).")#
-								#html.inputField(name="images_per_page",bind=prc.gallery,label="Images per page (automatic calculated):",readonly=true)#
+								#html.inputField(name="images_per_page",bind=prc.gallery,label="Images per page (is calculated automatically):",readonly=true)#
 								#html.select(name="images_number_rows",bind=prc.gallery,options=prc.images_in_table,label="*Number Of Rows:",title="The number of rows in table.")#
 								#html.select(name="images_number_columns",bind=prc.gallery,options=prc.images_in_table,label="*Number Of Columns:",title="The number of columns in table.")#
-								#html.checkbox(name="use_lightbox",bind=prc.gallery,label="Use Lightbox:",class="textfield",title="Use Lightbox for your view")#
+								#html.checkbox(name="use_lightbox",bind=prc.gallery,label="*Use Lightbox:",class="textfield",title="Use Lightbox for your view")#
+								<div class="form-actions"><b>* Value Is Required</b></div>
 								<div class="form-actions">
 									<button class="btn" onclick="return to('#event.buildLink(prc.xehGallery)#')">Cancel</button>
 									<input type="submit" value="Save" class="btn btn-danger">

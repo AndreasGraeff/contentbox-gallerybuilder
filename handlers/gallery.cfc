@@ -71,14 +71,14 @@ property name="tag"					inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
 		{
 			// test for images in gallery
 			oImages = imageEntity.list(criteria={gallery_id=oGallery});
-			if ( IsNull(oImages) )
+			if ( len(oImages) eq 0 )
 			{
 				galleryEntity.delete( oGallery );
 				getPlugin("MessageBox").setMessage("info", "Gallery Deleted!");
 			}
 			else
 			{
-				getPlugin("MessageBox").setMessage("error", "Error Deleting Gallery!&lt;br&gt;Gallery Contains Images!");
+				getPlugin("MessageBox").setMessage("error", "Error Deleting Gallery! Gallery Contains Images!");
 			}
 		}
 		setNextEvent(prc.xehGallery);

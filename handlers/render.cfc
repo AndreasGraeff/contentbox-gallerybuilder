@@ -25,12 +25,12 @@ component
 				// 1. pagenation
 				var linkto = event.buildLink(linkto=#event.getCurrentRoutedURL()#) & "?page=";
 				var images_per_page = prc.gallery.getImages_per_page();
+				if ( len(images) mod images_per_page eq 0 )
+					total_pages = len(images) / images_per_page;
+				else
+					total_pages = 1 + ( len(images) - (len(images) mod images_per_page) ) / images_per_page;
 				if ( len(images) gt prc.gallery.getImages_per_page() )
 				{
-					if ( len(images) mod images_per_page eq 0 )
-						total_pages = len(images) / images_per_page;
-					else
-						total_pages = 1 + ( len(images) - (len(images) mod images_per_page) ) / images_per_page;
 					var center = "Page #page# of #total_pages#";
 					var page = event.getValue("page", 1);
 					if ( page lt 2 )
