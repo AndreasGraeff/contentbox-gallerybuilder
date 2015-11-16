@@ -9,9 +9,6 @@ component
 
 	function gallery(event, rc, prc, slug)
 	{
-		// TODO Remove
-		//if ( arguments.slug == "" )
-		//	arguments.slug = event.getValue("slug", "");
 		if ( arguments.slug != "" )
 		{
 			prc.gallery = galleryEntity.findWhere({slug=arguments.slug});
