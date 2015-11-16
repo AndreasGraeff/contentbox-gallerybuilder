@@ -4,7 +4,11 @@ contentbox-gallerybuilder is a module for ContentBox, the ColdFusion based Conte
 
 You can create image galleries with it. These galleries are automatically pagenated and they also include support for a "Lightbox" view of an image.
 
-##Version 0.90.0
+It focuses on galleries of artists, who have distinct themes of art and want to present them thematically (i.e. each photography belongs to one single theme).
+
+It you wish to present a bunch of work together and tag each of them, you should better have a luck at "Open-Gallery" (contentbox-opengallery), another ContentBox module I wrote.
+
+##Version 0.95.0
 
 # Installation
 
@@ -21,6 +25,10 @@ If you don't use Lightbox, the image will be rendered directly into your page, t
 
 The image in your page are rendered into a html table. You can choose the number of rows and the number of columns in your gallery. To have an equal view for both images in landscape and portrait format, the table cells are squared rendered. You can set the height/width of a cell in the global settings, available via the settings button on the right of the GalleryBuilder admin view. 
 
+--
+Good practice:
+for the slug, if you have non standard ascii letters, first create the title like the slug (with normal)
+Since the slug ist unique, you cannot change the slug for a gallery after creation. 
 
 ##TODO
 - build lightbox for bootstrap

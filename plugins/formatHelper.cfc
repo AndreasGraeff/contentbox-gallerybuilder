@@ -14,7 +14,9 @@ component singleton
 
 	public string function thumbnail(image)
 	{
-		var thumb = tag.p(tag.img({src=image, class="gallery-builder-thumbnail"}));
+		var thumb = "-";
+		if ( image neq "" )
+			thumb = tag.p(tag.img({src=image, class="gallery-builder-thumbnail"}));
 		return thumb;
 	}
 }

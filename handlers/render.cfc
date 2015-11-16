@@ -10,8 +10,8 @@ component
 	function gallery(event, rc, prc, slug)
 	{
 		// TODO Remove
-		if ( arguments.slug == "" )
-			arguments.slug = event.getValue("slug", "");
+		//if ( arguments.slug == "" )
+		//	arguments.slug = event.getValue("slug", "");
 		if ( arguments.slug != "" )
 		{
 			prc.gallery = galleryEntity.findWhere({slug=arguments.slug});
@@ -25,6 +25,7 @@ component
 				// 1. pagenation
 				var linkto = event.buildLink(linkto=#event.getCurrentRoutedURL()#) & "?page=";
 				var images_per_page = prc.gallery.getImages_per_page();
+				var page = event.getValue("page", 1);
 				if ( len(images) mod images_per_page eq 0 )
 					total_pages = len(images) / images_per_page;
 				else
@@ -32,7 +33,6 @@ component
 				if ( len(images) gt prc.gallery.getImages_per_page() )
 				{
 					var center = "Page #page# of #total_pages#";
-					var page = event.getValue("page", 1);
 					if ( page lt 2 )
 					{
 						prev = tag.span("&lt;&lt;", {class="gallery-builder-page-disabled"});
