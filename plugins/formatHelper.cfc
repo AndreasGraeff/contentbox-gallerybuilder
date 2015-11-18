@@ -12,11 +12,11 @@ component singleton
 	}
 
 
-	public string function thumbnail(image)
+	public string function thumbnail(image, class)
 	{
 		var thumb = "-";
 		if ( image neq "" )
-			thumb = tag.p(tag.img({src=image, class="gallery-builder-thumbnail"}));
+			thumb = tag.p(tag.img({src=image, class=class}));
 		return thumb;
 	}
 }

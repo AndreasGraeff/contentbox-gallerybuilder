@@ -32,7 +32,7 @@
 
 				<table class="tablesorter table table-striped" width="98%">
 					<thead>
-						<tr>
+						<tr class="gallery-builder-admin-th">
 							<th>Title</th>
 							<th>Thumb</th>
 							<th>Description</th>
@@ -47,7 +47,7 @@
 							<td>
 								<a class="hand-cursor" href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
 								   title="Edit #i.getTitle()#">#i.getTitle()#</a></td>
-							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").thumbnail(i.getThumb())#</td>
+							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").thumbnail(i.getThumb(),"gallery-builder-admin-thumbnail")#</td>
 							<td>#i.getDescription()#</td>
 							<td>#i.getImage_date()#</td>
 							<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").boolean(i.getVisible())#</td>
