@@ -183,6 +183,7 @@
 	div.light_square .pp_middle,
 	div.light_square .pp_right,
 	div.light_square .pp_content { background: #fff; }
+	div.light_square .pp_overlay { background: #fff; }
 	
 	div.light_square .pp_content .ppt { color: #000; }
 	div.light_square .pp_expand { background: url(../images/prettyPhoto/light_square/sprite.png) -31px -26px no-repeat; cursor: pointer; } /* Expand button */

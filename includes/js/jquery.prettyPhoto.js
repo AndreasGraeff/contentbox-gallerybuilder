@@ -21,7 +21,7 @@
 			default_width: 500,
 			default_height: 344,
 			counter_separator_label: '/', /* The separator for the gallery counter 1 "of" 2 */
-			theme: 'pp_default', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+			theme: 'light_square', /* pp_default / light_rounded / dark_rounded / light_square / dark_square / facebook */
 			horizontal_padding: 20, /* The padding on each side of the picture */
 			hideflash: false, /* Hides all the flash object on a page, set to TRUE if flash appears over prettyPhoto */
 			wmode: 'opaque', /* Set the flash wmode attribute */
@@ -90,7 +90,7 @@
 			iframe_markup: '<iframe src ="{path}" width="{width}" height="{height}" frameborder="no"></iframe>',
 			inline_markup: '<div class="pp_inline">{content}</div>',
 			custom_markup: '',
-			social_tools: '<div class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div><div class="facebook"><iframe src="//www.facebook.com/plugins/like.php?locale=en_US&href={location_href}&amp;layout=button_count&amp;show_faces=true&amp;width=500&amp;action=like&amp;font&amp;colorscheme=light&amp;height=23" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:500px; height:23px;" allowTransparency="true"></iframe></div>' /* html or false to disable */
+			social_tools: false /* html or false to disable */
 		}, pp_settings);
 		
 		// Global variables accessible only by prettyPhoto
