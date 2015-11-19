@@ -72,6 +72,10 @@ component
 						{
 							var img = tag.img({src=images[i].getThumb()});
 							var desc = images[i].getDescription();
+							if ( images[i].getImage_date() neq "" )
+							{
+								desc = desc & " (" & images[i].getImage_date() & ")";
+							}
 							var anquor = tag.a(img, {href=images[i].getImage(),alt=desc,title=desc,rel="gallerybuilder"});
 							content = content & tag.td(anquor, {class=css});
 						}
