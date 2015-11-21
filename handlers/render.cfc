@@ -72,11 +72,17 @@ component
 						{
 							var img = tag.img({src=images[i].getThumb()});
 							var desc = images[i].getDescription();
-							var anquor = tag.a(img, {href=images[i].getImage(),alt=desc,title=desc,rel="gallerybuilder"});
+							if ( images[i].getImage_date() neq "" )
+							{
+								desc = desc & " (" & images[i].getImage_date() & ")";
+							}
+							var attrs = {href=images[i].getImage(),alt=desc,title=desc,rel="gallerybuilder"};
+							var dataAttrs = {lightbox="lightbox-image", title=desc};
+							var anquor = tag.a(img, attrs, dataAttrs);
 							content = content & tag.td(anquor, {class=css});
 						}
 						else
-							content = content & tag.td(tag.img({src=images[i].getImage()}));
+							content = content & tag.td(tag.div(tag.img({src=images[i].getImage()}), {class="image-set"}));
 						if ( this.checkCloseRow(i, len(images), page, images_per_page, number_rows, number_columns) )
 							content = content & tag.endtag("tr");
 					}

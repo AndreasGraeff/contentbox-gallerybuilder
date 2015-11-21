@@ -7,8 +7,8 @@ component
 	this.webURL 			= "http://www.artificial-images.de";
 	this.description 		= "A content box module to create a pagenated image gallery with lightbox support.";
 	this.version			= "0.0.1";
-	this.viewParentLookup 	= true;
-	this.layoutParentLookup = true;
+	this.viewParentLookup	= true;
+	this.layoutParentLookup	= true;
 	this.entryPoint			= "cbGalleryBuilder";
 
 
