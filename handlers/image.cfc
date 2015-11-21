@@ -43,8 +43,7 @@ component extends="super"
 		//prc.cbHelper = CBHelper;
 		prc.ckHelper = getMyPlugin(plugin="CKHelper",module="contentbox-admin");
 		prc.editors = editorService.getRegisteredEditorsMap();
-		// TODO, build like in baseContentHeader
-		prc.defaultEditor = "ckeditor";//getUserDefaultEditor( prc.oAuthor );
+		prc.defaultEditor = "ckeditor";
 		prc.cbAdminRoot = getContextRoot() & event.getModuleRoot('contentbox-admin') & "/views";
 		prc.oEditorDriver = editorService.getEditor(prc.defaultEditor);
 		prc.markups = editorService.getRegisteredMarkups();
