@@ -13,6 +13,12 @@ component singleton
 	}
 
 
+	public string function div(string content, struct attrs=structnew(), struct dataAttrs=structnew())
+	{
+		return tag("div", content, attrs, dataAttrs);
+	}
+
+
 	public string function img(struct attrs=structnew(), struct dataAttrs=structnew())
 	{
 		return startendtag("img", attrs, dataAttrs);
