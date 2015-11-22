@@ -68,21 +68,32 @@ component
 					{
 						if ( this.checkOpenRow(i, len(images), page, images_per_page, number_rows, number_columns) )
 							content = content & tag.starttag("tr");
+						var title = images[i].getTitle();
+						var thumb = tag.img({src=images[i].getThumb(),alt=title,title=title});
+						var desc = images[i].getDescription();
 						if ( prc.gallery.getUse_lightbox() )
 						{
-							var img = tag.img({src=images[i].getThumb()});
-							var desc = images[i].getDescription();
 							if ( images[i].getImage_date() neq "" )
 							{
 								desc = desc & " (" & images[i].getImage_date() & ")";
 							}
-							var attrs = {href=images[i].getImage(),alt=desc,title=desc,rel="gallerybuilder"};
+							var attrs = {href=images[i].getImage(),rel="gallerybuilder"};
 							var dataAttrs = {lightbox="lightbox-image", title=desc};
-							var anquor = tag.a(img, attrs, dataAttrs);
+							var anquor = tag.a(thumb, attrs, dataAttrs);
 							content = content & tag.td(anquor, {class=css});
 						}
 						else
-							content = content & tag.td(tag.div(tag.img({src=images[i].getImage()}), {class="image-set"}));
+						{
+							var img = tag.img({src=images[i].getImage(),alt=title,title=title});
+							var paragraph = "";
+							if ( desc neq "" )
+							{
+								if ( images[i].getImage_date() neq "" )
+									desc = desc & " (" & images[i].getImage_date() & ")";
+								paragraph = tag.p(desc, {class="gallery-builder-table-image-p"});
+							}
+							content = content & tag.td(tag.div(img) & paragraph);
+						}
 						if ( this.checkCloseRow(i, len(images), page, images_per_page, number_rows, number_columns) )
 							content = content & tag.endtag("tr");
 					}
