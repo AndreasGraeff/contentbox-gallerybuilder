@@ -39,7 +39,9 @@
 						<cfloop array="#prc.galleries#" index="g">
 						<tr>
 							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
-								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getName()#</a></td>
+								   title="Images In Gallery &quot;#g.getName()#&quot;">
+									   <i class="icon-plus-sign icon-large text"></i>
+									   #g.getName()#</a></td>
 							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getSlug()#</a></td>
 							<td>#dateFormat(g.getCreated_at(),"short")# #timeFormat(g.getCreated_at(),"short")#</td>
