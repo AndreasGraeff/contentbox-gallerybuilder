@@ -22,7 +22,7 @@
 					<div class="filterBar" style="min-height: 30px;"></div>
 				</div>
 
-				<table class="tablesorter table table-striped">
+				<table id="gallery" class="tablesorter table table-striped">
 					<thead>
 						<tr>
 							<th>Gallery</th>
@@ -36,12 +36,14 @@
 						</tr>
 					</thead>
 					<tbody>
+						<cfset idx = 0>
 						<cfloop array="#prc.galleries#" index="g">
-						<tr>
-							<td data-id="cell-#g.getGallery_id()#"><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
+							<cfset idx = idx + 1>
+						<tr name="reihe-#idx#">
+							<td><i class="icon-plus-sign icon-large text" data-row="#idx#" id="plus-sign-#g.getGallery_id()#"></i>
+								<a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">
-									   <i class="icon-plus-sign icon-large text" rel="image_view" data-id="#g.getGallery_id()#"></i>
-									   #g.getName()#</a></td>
+								#g.getName()#</a></td>
 							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getSlug()#</a></td>
 							<td>#dateFormat(g.getCreated_at(),"short")# #timeFormat(g.getCreated_at(),"short")#</td>
@@ -56,7 +58,6 @@
 									data-title="Delete Gallery?"><i id="delete_#g.getGallery_id()#" class="icon-trash icon-large"></i></a>
 							</td>
 						</tr>
-						<tr><td colspan="8" class="invisible-row" id="hidden-cell-#g.getGallery_id()#" name="td_#g.getName()#"></td></tr>
 						</cfloop>
 					</tbody>
 				</table>
