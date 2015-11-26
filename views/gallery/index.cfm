@@ -38,9 +38,9 @@
 					<tbody>
 						<cfloop array="#prc.galleries#" index="g">
 						<tr>
-							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
+							<td data-id="cell-#g.getGallery_id()#"><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">
-									   <i class="icon-plus-sign icon-large text"></i>
+									   <i class="icon-plus-sign icon-large text" rel="image_view" data-id="#g.getGallery_id()#"></i>
 									   #g.getName()#</a></td>
 							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getSlug()#</a></td>
@@ -56,6 +56,7 @@
 									data-title="Delete Gallery?"><i id="delete_#g.getGallery_id()#" class="icon-trash icon-large"></i></a>
 							</td>
 						</tr>
+						<tr><td colspan="8" class="invisible-row" id="hidden-cell-#g.getGallery_id()#" name="td_#g.getName()#"></td></tr>
 						</cfloop>
 					</tbody>
 				</table>
