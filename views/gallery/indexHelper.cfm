@@ -1,4 +1,5 @@
 <cfoutput>
+<link href="#prc.moduleRoot#/includes/css/gallery-builder.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 $(document).ready(function(){
 	function deleteGallery(gallery_id)
@@ -7,7 +8,7 @@ $(document).ready(function(){
 		$("##galleriesForm").submit();
 	}
 
-	$('.icon-plus-sign').click(function(){
+	/*$('.icon-plus-sign').click(function(){
 		console.log('Going plus');
 		var event = $(this).attr('data-row');
 		$('##gallery > tbody > tr').eq(event - 1).after('<tr><td colspan="8">I injected this.</td></tr>');
@@ -27,11 +28,33 @@ $(document).ready(function(){
 	        	}
 	        }
 		});
-	});
+	});*/
 
-	$('.icon-minus-sign').click(function(){
-		console.log('Going minus');
-		var event = $(this).attr('data-row');
+	$('[id^=plus-minus-sign-]').click(function(){
+		var event = $(this).data('row');
+		console.log('event ' + event);
+		var toogle = $(this).data('toogle');
+		console.log('Going ' + toogle);
+		var increment = 1;
+		if ( toogle == 'plus' )
+		{
+			$(this).data('toogle', 'minus');
+        	$(this).removeClass('icon-plus-sign');
+        	$(this).addClass('icon-minus-sign');
+        	$('##gallery > tbody > tr').eq(event - 1).after('<tr><td colspan="8">I injected this.</td></tr>');
+			//console.log('do open');
+		}
+		else
+		{
+			increment = -1;
+			$(this).data('toogle', 'plus');
+        	$(this).removeClass('icon-minus-sign');
+        	$(this).addClass('icon-plus-sign');
+			$('##gallery > tbody > tr').eq(event).remove();
+			//$(this).html('+');
+			//console.log('do close');
+		}
+		/*
 		$('##gallery > tbody > tr').eq(event - 1).remove();
 		$('##gallery > tbody > tr').each(function (i, row) {
 	        console.log('i: ' + i);
@@ -48,7 +71,7 @@ $(document).ready(function(){
 		        	$sign.addClass('icon-plus-sign');
 	        	}
 	        }
-		});
+		});*/
 	});
 });
 </script>

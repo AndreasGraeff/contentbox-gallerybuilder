@@ -40,7 +40,10 @@
 						<cfloop array="#prc.galleries#" index="g">
 							<cfset idx = idx + 1>
 						<tr name="reihe-#idx#">
-							<td><i class="icon-plus-sign icon-large text" data-row="#idx#" ixxd="plus-sign-#g.getGallery_id()#"></i>
+							<td><i class="icon-plus-sign icon-large text" id="plus-minus-sign-#idx#" data-row="#idx#" data-toogle="plus" data-id="#g.getGallery_id()#"></i>
+								<!--- <div id="plus-minus-sign-#idx#" data-row="#idx#" data-toogle="plus" data-id="#g.getGallery_id()#"
+								class="gallery-builder-sub-toogle">+
+			</div> --->
 								<a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">
 								#g.getName()#</a></td>
