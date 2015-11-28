@@ -1,6 +1,5 @@
 component extends="super"
 {
-	//property name="CBHelper"			inject="id:CBHelper@cb";
 	property name="editorService"		inject="id:editorService@cb";
 
 
@@ -32,15 +31,15 @@ component extends="super"
 			prc.images = [];
 		}
 		prc.xehCreate = event.buildLink(prc.xehImageEditor) & '/gallery_id/#prc.gallery_id#';
-		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
-		//prc.imageEntity = imageEntity;
+		//prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
+		// since V1.1 image will be shown in gallery injected below the gallery
+		event.setLayout(name="ajax", module="contentbox-admin");
 		event.setView(view="image/index", module="contentbox-gallerybuilder");
 	}
 
 
 	function editor(event, rc, prc)
 	{
-		//prc.cbHelper = CBHelper;
 		prc.ckHelper = getMyPlugin(plugin="CKHelper",module="contentbox-admin");
 		prc.editors = editorService.getRegisteredEditorsMap();
 		prc.defaultEditor = "ckeditor";
