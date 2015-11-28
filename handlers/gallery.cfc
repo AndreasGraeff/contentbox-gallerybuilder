@@ -7,11 +7,6 @@ property name="tag"					inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
 		checkGalleryPath();
 		prc.galleries = galleryEntity.list(sortOrder="gallery_id ASC",asQuery=false);
 		prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
-
-		prc.myhtml = tag.span("nix drin");
-		prc.myhtml = tag.span("<<", {class="gallery-builder-page-enabled"}, {lightbox="click here"});
-		prc.myhtml = tag.span("<<", {class="gallery-builder-page-enabled"});
-
 		event.setView(view="gallery/index", module="contentbox-gallerybuilder");
 	}
 
