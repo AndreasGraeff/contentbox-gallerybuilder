@@ -90,7 +90,7 @@ component
 							{
 								if ( images[i].getImage_date() neq "" )
 									desc = desc & " (" & images[i].getImage_date() & ")";
-								paragraph = tag.p(desc, {class="gallery-builder-table-image-p"});
+								paragraph = tag.p(desc, {class="gallery-builder-table-image-desc"});
 							}
 							content = content & tag.td(tag.div(img) & paragraph);
 						}
