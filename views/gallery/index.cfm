@@ -1,7 +1,4 @@
 <cfoutput>
-	<cfif isdefined("prc.galleryEntity")>
-	<cfdump var="#prc.galleryEntity#">
-	</cfif>
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
@@ -36,14 +33,10 @@
 						</tr>
 					</thead>
 					<tbody>
-						<cfset idx = 0>
-						<cfloop array="#prc.galleries#" index="g">
-							<cfset idx = idx + 1>
+						<cfloop array="#prc.galleries#" index="idx" item="g">
 						<tr name="reihe-#idx#">
-							<td><i class="icon-plus-sign icon-large text" id="plus-minus-sign-#idx#" data-row="#idx#" data-toogle="plus" data-id="#g.getGallery_id()#"></i>
-								<!--- <div id="plus-minus-sign-#idx#" data-row="#idx#" data-toogle="plus" data-id="#g.getGallery_id()#"
-								class="gallery-builder-sub-toogle">+
-			</div> --->
+							<td><i class="icon-plus-sign icon-large text" id="plus-minus-sign-#idx#"
+									data-row="#idx#" data-toogle="plus" data-id="#g.getGallery_id()#"></i>
 								<a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">
 								#g.getName()#</a></td>
