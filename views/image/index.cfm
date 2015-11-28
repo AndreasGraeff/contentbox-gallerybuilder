@@ -1,9 +1,4 @@
 <cfoutput>
-	<style>
-	.gallery-builder-thumb img {
-	height: 50px;
-	}
-	</style>
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
