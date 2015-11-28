@@ -8,28 +8,6 @@ $(document).ready(function(){
 		$("##galleriesForm").submit();
 	}
 
-	/*$('.icon-plus-sign').click(function(){
-		console.log('Going plus');
-		var event = $(this).attr('data-row');
-		$('##gallery > tbody > tr').eq(event - 1).after('<tr><td colspan="8">I injected this.</td></tr>');
-		$('##gallery > tbody > tr').each(function (i, row) {
-	        console.log('i: ' + i);
-	        var $sign = $(row).find('td > i');
-	        var datarow = parseInt($sign.attr('data-row'));
-	        if ( datarow && datarow > (event - 1)  )
-	        {
-	        	//console.log(datarow + '-' + event);
-	        	//console.log('Increment: ' + datarow)
-	        	$sign.attr('data-row', (datarow + 1));
-	        	if ( datarow == event )
-	        	{
-		        	$sign.removeClass('icon-plus-sign');
-		        	$sign.addClass('icon-minus-sign');
-	        	}
-	        }
-		});
-	});*/
-
 	$('[id^=plus-minus-sign-]').click(function(){
 		var event = $(this).data('row');
 		console.log('event ' + event);
@@ -57,7 +35,6 @@ $(document).ready(function(){
 	        var datarow = parseInt($sign.data('row'));
 	        if ( datarow && datarow > event )
 	        {
-	        	console.log('update: ' + datarow)
 	        	$sign.data('row', (datarow + increment));
 	        }
 		});
