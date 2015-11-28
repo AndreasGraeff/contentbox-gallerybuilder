@@ -42,7 +42,6 @@ $(document).ready(function(){
         	$(this).removeClass('icon-plus-sign');
         	$(this).addClass('icon-minus-sign');
         	$('##gallery > tbody > tr').eq(event - 1).after('<tr><td colspan="8">I injected this.</td></tr>');
-			//console.log('do open');
 		}
 		else
 		{
@@ -51,27 +50,17 @@ $(document).ready(function(){
         	$(this).removeClass('icon-minus-sign');
         	$(this).addClass('icon-plus-sign');
 			$('##gallery > tbody > tr').eq(event).remove();
-			//$(this).html('+');
-			//console.log('do close');
 		}
-		/*
-		$('##gallery > tbody > tr').eq(event - 1).remove();
 		$('##gallery > tbody > tr').each(function (i, row) {
 	        console.log('i: ' + i);
 	        var $sign = $(row).find('td > i');
-	        var datarow = parseInt($sign.attr('data-row'));
-	        if ( datarow && datarow > (event - 1)  )
+	        var datarow = parseInt($sign.data('row'));
+	        if ( datarow && datarow > event )
 	        {
-	        	//console.log(datarow + '-' + event);
-	        	//console.log('Increment: ' + datarow)
-	        	$sign.attr('data-row', (datarow + 1));
-	        	if ( datarow == event )
-	        	{
-		        	$sign.removeClass('icon-minus-sign');
-		        	$sign.addClass('icon-plus-sign');
-	        	}
+	        	console.log('update: ' + datarow)
+	        	$sign.data('row', (datarow + increment));
 	        }
-		});*/
+		});
 	});
 });
 </script>
