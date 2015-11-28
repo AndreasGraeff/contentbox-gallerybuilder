@@ -8,9 +8,15 @@ $(document).ready(function(){
 		$("##galleriesForm").submit();
 	}
 
+	function deleteImage(image_id)
+	{
+		$("##image_id").val(image_id);
+		$("##imagesForm").submit();
+	}
+
 	$('[id^=plus-minus-sign-]').click(function(){
+		var id = $(this).data('id');
 		var event = $(this).data('row');
-		console.log('event ' + event);
 		var toogle = $(this).data('toogle');
 		console.log('Going ' + toogle);
 		var increment = 1;
@@ -19,7 +25,10 @@ $(document).ready(function(){
 			$(this).data('toogle', 'minus');
         	$(this).removeClass('icon-plus-sign');
         	$(this).addClass('icon-minus-sign');
-        	$('##gallery > tbody > tr').eq(event - 1).after('<tr><td colspan="8">I injected this.</td></tr>');
+	        url = '#event.buildLink(prc.xehImage)#/gallery_id/' + id;
+	        $.ajax({ url: url, context: document.body, success: function(data){
+	        	$('##gallery > tbody > tr').eq(event - 1).after(data);
+	        }});
 		}
 		else
 		{
