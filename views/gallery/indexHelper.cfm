@@ -9,12 +9,12 @@ function deleteGallery(gallery_id)
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('[id^=deleteImage_]').live('click', function(e){
+	/*$('[id^=deleteImage_]').live('click', function(e){
 		var gallery_id = $(this).data('gallery_id');
 		var image_id = $(this).data('image_id');
 		$("##image_id_" + gallery_id).val(image_id);
 		$("##imagesForm_" + gallery_id).submit();
-	});
+	});*/
 
 	$('[id^=plus-minus-sign-]').click(function(){
 		var id = $(this).data('id');
@@ -30,6 +30,7 @@ $(document).ready(function(){
 	        url = '#event.buildLink(prc.xehImage)#/gallery_id/' + id;
 	        $.ajax({ url: url, context: document.body, success: function(data){
 	        	$('##gallery > tbody > tr').eq(event - 1).after(data);
+	        	//$("##imagesForm_" + id).addClass("confirmIt");
 				$("body").toggleClass("wait");
 	        }});
 		}

@@ -99,7 +99,7 @@ component extends="super"
 
 	function delete(event,rc,prc)
 	{
-		var oImage = imageEntity.get( rc.image_id );
+		/*var oImage = imageEntity.get( rc.image_id );
 		if( IsNull(oImage) )
 		{
 			getPlugin("MessageBox").setMessage("warning", "Invalid Formular detected!");
@@ -109,7 +109,7 @@ component extends="super"
 			gallery_id = oImage.getGallery_id().getGallery_id();
 			imageEntity.delete( oImage );
 			getPlugin("MessageBox").setMessage("info", "Image Deleted!");
-		}
+		}*/
 		setNextEvent(prc.xehGallery);
 	}
 }

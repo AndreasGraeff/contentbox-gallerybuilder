@@ -14,7 +14,8 @@
 				<th>Description</th>
 				<th>Date</th>
 				<th>Visible</th>
-				<th width="75" class="center {sorter:false}">Actions</th>
+				<th>Actions</th>
+				<th>Delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,15 +28,22 @@
 				<td>#i.getDescription()#</td>
 				<td>#i.getImage_date()#</td>
 				<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").boolean(i.getVisible())#</td>
-				<td class="center">
+				<td>
 					<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#prc.gallery_id#/image_id/#i.getImage_id()#"
 					   title="Edit #i.getTitle()#"><i class="icon-edit icon-large"></i></a>
-					<a title="Delete Image" href="javascript:void(0);" class="confirmIt textRed" data-title="Delete Image?">
+					<!--- <a title="Delete Image" href="javascript:void(0);" class="confirmIt textRed" data-title="Delete Image?">
 						<i data-gallery_id="#prc.gallery_id#" data-image_id="#i.getImage_id()#"
-						id="deleteImage_#prc.gallery_id#_#i.getImage_id()#" class="icon-trash icon-large"></i></a>
+						id="deleteImage_#prc.gallery_id#_#i.getImage_id()#" class="icon-trash icon-large"></i></a> --->
 				</td>
+				<td>#html.checkbox(name="delete_images",value="#i.getImage_id()#",title="Delete Image")#</td>
 			</tr>
 			</cfloop>
+			<tr>
+				<td colspan="5"></td>
+				<td colspan="2">
+					<input type="submit" value="Delete Images" class="btn btn-danger" id="submit_#prc.gallery_id#" name="submit_#prc.gallery_id#">
+				</td>
+			</tr>
 		</tbody>
 	</table>
 	#html.endForm()#
