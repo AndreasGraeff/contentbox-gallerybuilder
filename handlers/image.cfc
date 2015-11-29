@@ -107,7 +107,7 @@ component extends="super"
 				var oImage = imageEntity.get( int(ListGetAt(delete_images,i,",")) );
 				imageEntity.delete( oImage );
 			}
-			getPlugin("MessageBox").setMessage("info", "#length# Images Deleted!");
+			getPlugin("MessageBox").setMessage("info", "#length# Image(s) Deleted!");
 		}
 		else
 			getPlugin("MessageBox").setMessage("error", "Delete Error, No Image Selected!");
