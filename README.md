@@ -1,6 +1,6 @@
 # contentbox-gallerybuilder
 
-## Version 1.0.0
+## Version 1.0.2
 
 contentbox-gallerybuilder is a module for ContentBox, the ColdFusion based Content Management System.
 
@@ -9,8 +9,11 @@ You can create image galleries with it. These galleries are automatically pagena
 It focuses on galleries of artists, who have distinct themes of art and want to present them thematically (i.e. each photography belongs to one single theme).
 
 # Installation
+Download and expand the Zip-file from github to a directory of your choice or "git clone" the latest releases. Take care of the file "install-module.zip", it contains the complete module.
 
-To install the "contentbox-gallerybuilder" go the ContentBox Administrator, click on "Modules" -> Manage. Select the file in the "Module Uploader" or install it directly from the "ForgeBox" tab.
+To install the "contentbox-gallerybuilder" go the ContentBox Administrator, click on "Modules" -> Manage. Select the file "install-module.zip" to upload in the "Module Uploader" or install it directly from the "ForgeBox" tab.
+
+**Attn: DO NOT INSTAll** the zip-file "contentbox-gallerybuilder-master.zip" (or releases like "contentbox-gallerybuilder-1.0.2.zip") you downloaded from github, it contains the branch name in it's path, this will cause errors.
 
 The contentbox-gallerybuilder also requires the gallerybuilder widget, please take care you have also installed this widget.
 
