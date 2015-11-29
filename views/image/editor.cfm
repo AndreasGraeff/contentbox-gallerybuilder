@@ -26,7 +26,7 @@
 								#html.checkbox(name="visible",bind=prc.image,label="*Visible:",class="textfield",title="Set image visible or hidden in your gallery")#
 								<div class="form-actions"><b>* Value Is Required</b></div>
 								<div class="form-actions">
-									<button class="btn" onclick="return to('#prc.xehGallery#')">Cancel</button>
+									<button class="btn" onclick="return to('#event.buildLink(prc.xehGallery)#')">Cancel</button>
 									<input type="submit" value="Save" class="btn btn-danger" id="submit">
 								</div>
 								#html.endFieldSet()#

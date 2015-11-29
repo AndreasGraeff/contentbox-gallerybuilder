@@ -86,7 +86,7 @@ component extends="super"
 		{
 			imageEntity.save(oImage);
 			getPlugin("MessageBox").info("Image saved!");
-			setNextEvent(event=prc.xehImage,queryString="image_id=#oImage.getImage_id()#");
+			setNextEvent(event=prc.xehGallery);
 		}
 		else
 		{
@@ -103,14 +103,13 @@ component extends="super"
 		if( IsNull(oImage) )
 		{
 			getPlugin("MessageBox").setMessage("warning", "Invalid Formular detected!");
-			setNextEvent(prc.xehGallery);
 		}
 		else
 		{
 			gallery_id = oImage.getGallery_id().getGallery_id();
 			imageEntity.delete( oImage );
 			getPlugin("MessageBox").setMessage("info", "Image Deleted!");
-			setNextEvent(event=prc.xehImage, queryString="gallery_id=#gallery_id#");
 		}
+		setNextEvent(prc.xehGallery);
 	}
 }

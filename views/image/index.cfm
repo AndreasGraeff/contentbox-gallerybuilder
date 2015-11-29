@@ -1,9 +1,10 @@
 <cfoutput>
 <tr><td colspan="8">
 	#getPlugin("MessageBox").renderIt()#
-
-	#html.startForm(name="imagesForm",action=prc.xehImageDelete)#
-	#html.hiddenField(name="image_id",value="")#
+	<!--- this form can be injected multiple (one for every gallery) --->
+	#html.startForm(name="imagesForm_#prc.gallery_id#",action=prc.xehImageDelete)#
+	#html.hiddenField(name="image_id",id="image_id_#prc.gallery_id#",value="")#
+	#html.hiddenField(name="gallery_id",value="#prc.gallery_id#")#
 
 	<table class="tablesorter table table-striped" width="98%">
 		<thead>
@@ -20,17 +21,18 @@
 			<cfloop array="#prc.images#" index="i">
 			<tr>
 				<td>
-					<a class="hand-cursor" href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
+					<a class="hand-cursor" href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#prc.gallery_id#/image_id/#i.getImage_id()#"
 					   title="Edit #i.getTitle()#">#i.getTitle()#</a></td>
 				<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").thumbnail(i.getThumb(),"gallery-builder-admin-thumbnail")#</td>
 				<td>#i.getDescription()#</td>
 				<td>#i.getImage_date()#</td>
 				<td>#getMyPlugin(plugin="formatHelper",module="contentbox-gallerybuilder").boolean(i.getVisible())#</td>
 				<td class="center">
-					<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#i.getGallery_id().getGallery_id()#/image_id/#i.getImage_id()#"
+					<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#prc.gallery_id#/image_id/#i.getImage_id()#"
 					   title="Edit #i.getTitle()#"><i class="icon-edit icon-large"></i></a>
-					<a title="Delete Image" href="javascript:deleteImage('#i.getImage_id()#')" class="confirmIt textRed"
-						data-title="Delete Image?"><i id="delete_#i.getImage_id()#" class="icon-trash icon-large"></i></a>
+					<a title="Delete Image" href="javascript:void(0);" class="confirmIt textRed" data-title="Delete Image?">
+						<i data-gallery_id="#prc.gallery_id#" data-image_id="#i.getImage_id()#"
+						id="deleteImage_#prc.gallery_id#_#i.getImage_id()#" class="icon-trash icon-large"></i></a>
 				</td>
 			</tr>
 			</cfloop>

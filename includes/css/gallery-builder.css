@@ -5,3 +5,4 @@
 .gallery-builder-page-disabled{opacity:0.5;filter:alpha(opacity=50);}
 .gallery-builder-page-enabled{}
 .gallery-builder-table-image-desc{width:auto;text-align:center;}
+body.wait, body.wait *{cursor:wait !important;}
