@@ -1,7 +1,4 @@
 <cfoutput>
-	<cfif isdefined("prc.galleryEntity")>
-	<cfdump var="#prc.galleryEntity#">
-	</cfif>
 <div class="row-fluid">
 	<div class="span9" id="main-content">
 		<div class="box">
@@ -22,7 +19,7 @@
 					<div class="filterBar" style="min-height: 30px;"></div>
 				</div>
 
-				<table class="tablesorter table table-striped">
+				<table id="gallery" class="tablesorter table table-striped">
 					<thead>
 						<tr>
 							<th>Gallery</th>
@@ -36,10 +33,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<cfloop array="#prc.galleries#" index="g">
-						<tr>
-							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
-								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getName()#</a></td>
+						<cfloop array="#prc.galleries#" index="idx" item="g">
+						<tr name="reihe-#idx#">
+							<td><i class="icon-plus-sign icon-large text" id="plus-minus-sign-#idx#"
+									data-row="#idx#" data-toogle="plus" data-id="#g.getGallery_id()#"></i>
+								<a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
+								   title="Images In Gallery &quot;#g.getName()#&quot;">
+								#g.getName()#</a></td>
 							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
 								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getSlug()#</a></td>
 							<td>#dateFormat(g.getCreated_at(),"short")# #timeFormat(g.getCreated_at(),"short")#</td>
