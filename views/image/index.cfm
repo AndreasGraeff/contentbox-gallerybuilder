@@ -31,11 +31,8 @@
 				<td>
 					<a href="#event.buildLink(prc.xehImageEditor)#/gallery_id/#prc.gallery_id#/image_id/#i.getImage_id()#"
 					   title="Edit #i.getTitle()#"><i class="icon-edit icon-large"></i></a>
-					<!--- <a title="Delete Image" href="javascript:void(0);" class="confirmIt textRed" data-title="Delete Image?">
-						<i data-gallery_id="#prc.gallery_id#" data-image_id="#i.getImage_id()#"
-						id="deleteImage_#prc.gallery_id#_#i.getImage_id()#" class="icon-trash icon-large"></i></a> --->
 				</td>
-				<td>#html.checkbox(name="delete_images",value="#i.getImage_id()#",title="Delete Image")#</td>
+				<td>#html.checkbox(name="delete_images",value="#i.getImage_id()#",title="Mark To Delete Image")#</td>
 			</tr>
 			</cfloop>
 			<tr>

@@ -73,7 +73,7 @@ property name="tag"					inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
 			}
 			else
 			{
-				getPlugin("MessageBox").setMessage("error", "Error Deleting Gallery! Gallery Contains Images!");
+				getPlugin("MessageBox").setMessage("error", "Error Deleting Gallery. Gallery Contains Images!");
 			}
 		}
 		setNextEvent(prc.xehGallery);
