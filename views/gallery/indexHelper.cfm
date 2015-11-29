@@ -10,20 +10,16 @@ function deleteGallery(gallery_id)
 <script type="text/javascript">
 $(document).ready(function(){
 	$('[id^=deleteImage_]').live('click', function(e){
-		//$("##confirmIt").show()
-		//$(document).on("click", ".alert", function(e) {
 		var gallery_id = $(this).data('gallery_id');
 		var image_id = $(this).data('image_id');
 		$("##image_id_" + gallery_id).val(image_id);
 		$("##imagesForm_" + gallery_id).submit();
-		//alert('deleting ' + image_id + ' in ' + gallery_id);
 	});
 
 	$('[id^=plus-minus-sign-]').click(function(){
 		var id = $(this).data('id');
 		var event = $(this).data('row');
 		var toogle = $(this).data('toogle');
-		console.log('Going ' + toogle);
 		var increment = 1;
 		if ( toogle == 'plus' )
 		{
@@ -46,7 +42,6 @@ $(document).ready(function(){
 			$('##gallery > tbody > tr').eq(event).remove();
 		}
 		$('##gallery > tbody > tr').each(function (i, row) {
-	        console.log('i: ' + i);
 	        var $sign = $(row).find('td > i');
 	        var datarow = parseInt($sign.data('row'));
 	        if ( datarow && datarow > event )
