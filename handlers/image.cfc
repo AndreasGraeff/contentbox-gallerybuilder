@@ -31,8 +31,7 @@ component extends="super"
 			prc.images = [];
 		}
 		prc.xehCreate = event.buildLink(prc.xehImageEditor) & '/gallery_id/#prc.gallery_id#';
-		//prc.moduleRoot = getModuleSettings( "contentbox-gallerybuilder" ).mapping;
-		// since V1.1 image will be shown in gallery injected below the gallery
+		// since V1.0 image will be shown in gallery injected below the gallery
 		event.setLayout(name="ajax", module="contentbox-admin");
 		event.setView(view="image/index", module="contentbox-gallerybuilder");
 	}
@@ -99,17 +98,19 @@ component extends="super"
 
 	function delete(event,rc,prc)
 	{
-		/*var oImage = imageEntity.get( rc.image_id );
-		if( IsNull(oImage) )
+		var delete_images = event.getValue("delete_images", "");
+		var length = ListLen(delete_images,",");
+		if ( length )
 		{
-			getPlugin("MessageBox").setMessage("warning", "Invalid Formular detected!");
+			for ( i = 1; i lte length; i=i+1 )
+			{
+				var oImage = imageEntity.get( int(ListGetAt(delete_images,i,",")) );
+				imageEntity.delete( oImage );
+			}
+			getPlugin("MessageBox").setMessage("info", "#length# Images Deleted!");
 		}
 		else
-		{
-			gallery_id = oImage.getGallery_id().getGallery_id();
-			imageEntity.delete( oImage );
-			getPlugin("MessageBox").setMessage("info", "Image Deleted!");
-		}*/
+			getPlugin("MessageBox").setMessage("error", "Delete Error, No Image Selected!");
 		setNextEvent(prc.xehGallery);
 	}
 }
