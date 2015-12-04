@@ -37,11 +37,8 @@
 						<tr name="reihe-#idx#">
 							<td><i class="icon-plus-sign icon-large text" id="plus-minus-sign-#idx#"
 									data-row="#idx#" data-toogle="plus" data-id="#g.getGallery_id()#"></i>
-								<a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
-								   title="Images In Gallery &quot;#g.getName()#&quot;">
-								#g.getName()#</a></td>
-							<td><a class="hand-cursor" href="#event.buildLink(prc.xehImage)#/gallery_id/#g.getGallery_id()#"
-								   title="Images In Gallery &quot;#g.getName()#&quot;">#g.getSlug()#</a></td>
+								#g.getName()#</td>
+							<td>#g.getSlug()#</td>
 							<td>#dateFormat(g.getCreated_at(),"short")# #timeFormat(g.getCreated_at(),"short")#</td>
 							<td>#g.getImages_per_page()#</td>
 							<td>#g.getImages_number_rows()#</td>
