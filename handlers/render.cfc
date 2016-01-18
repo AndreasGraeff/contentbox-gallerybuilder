@@ -53,8 +53,7 @@ component
 						href = linkto & "#page+1#";
 						next = tag.a(next, {href=href});
 					}
-
-					prc.Pagenation = tag.table(tag.TR(tag.TD(prev) & tag.td(center) & tag.td(next)), {class="gallery-builder-pagenation"});
+					prc.Pagenation = tag.div(tag.span(prev) & tag.span(center) & tag.span(next), {class="gallery-builder-pagenation"});
 				}
 				else
 					prc.Pagenation = "";
