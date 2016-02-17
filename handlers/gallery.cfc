@@ -1,6 +1,7 @@
 component extends="super"
 {
-property name="tag"					inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
+	property name="tag" inject="coldbox:myPlugin:tag@contentbox-gallerybuilder";
+
 
 	function index(event,rc,prc)
 	{
