@@ -5,7 +5,7 @@ component
 	property name="galleryEntity"		inject="entityService:gallery";
 	property name="imageEntity"			inject="entityService:image";
 	property name="settingService" 		inject="settingService@cb";
-	property name="htmlHelper" 			inject="coldbox:plugin:HTMLHelper";
+	property name="HTMLHelper" 			inject="coldbox:plugin:HTMLHelper";
 
 
 	// Coldbox module preHandler
