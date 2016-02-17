@@ -4,5 +4,6 @@
 .gallery-builder-pagenation span{margin:2px 10px 2px 10px;}
 .gallery-builder-page-disabled{opacity:0.5;filter:alpha(opacity=50);}
 .gallery-builder-page-enabled{}
+.gallery-builder-table-images td{text-align:center;}
 .gallery-builder-table-image-desc{width:auto;text-align:center;}
 body.wait, body.wait *{cursor:wait !important;}
