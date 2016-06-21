@@ -18,7 +18,7 @@ component
 				var settings = deserializeJSON(settingService.getSetting("gallery_builder"));
 				var css = "gallery-builder-table-images-td-#settings.size_image#"
 				prc.style = ".#css#{width:#settings.size_image#px;height:#settings.size_image#px;}"
-				var images = imageEntity.list(criteria={gallery_id=prc.gallery, visible=true},asQuery=false);
+				var images = imageEntity.list(criteria={gallery_id=prc.gallery, visible=true},asQuery=false, sortOrder="image_id DESC");
 				// 1. pagenation
 				var linkto = event.buildLink(linkto=#event.getCurrentRoutedURL()#) & "?page=";
 				var images_per_page = prc.gallery.getImages_per_page();
