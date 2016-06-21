@@ -1,6 +1,6 @@
 # contentbox-gallerybuilder
 
-## Version 1.0.2
+## Version 1.0.3
 
 contentbox-gallerybuilder is a module for ContentBox, the ColdFusion based Content Management System.
 
