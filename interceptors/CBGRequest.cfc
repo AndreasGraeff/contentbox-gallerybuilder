@@ -1,5 +1,6 @@
 /* interceptor gallery */
-component extends="contentbox-admin.interceptors.CBRequest" {
+component extends="modules.contentbox-admin.interceptors.CBRequest"
+{
 
 	void function configure(){}
 

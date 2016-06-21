@@ -36,8 +36,11 @@
 			</tr>
 			</cfloop>
 			<tr>
-				<td colspan="5"></td>
-				<td colspan="2">
+				<td colspan="3"></td>
+				<td colspan="3">
+					<button class="btn btn-danger" onclick="window.location.href='#prc.xehCreate#';return false;" title="Create Image">Create Image</button>
+				</td>
+				<td>
 					<input type="submit" value="Delete Images" class="btn btn-danger" id="submit_#prc.gallery_id#" name="submit_#prc.gallery_id#">
 				</td>
 			</tr>

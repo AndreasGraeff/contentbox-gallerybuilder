@@ -23,7 +23,7 @@ component extends="super"
 		if ( IsDefined("prc.gallery") and IsObject(prc.gallery) )
 		{
 			prc.gallery_name = "Images In Gallery #chr(34)##prc.gallery.getName()##chr(34)#";
-			prc.images = imageEntity.list(criteria={gallery_id=prc.gallery},sortOrder="image_id ASC",asQuery=false);
+			prc.images = imageEntity.list(criteria={gallery_id=prc.gallery}, sortOrder="image_id DESC", asQuery=false);
 		}
 		else
 		{
