@@ -15,16 +15,16 @@ $(document).ready( function()
 		toolbar: ckImageOnlyToolbar,
 		toolbarCanCollapse: true,
 		height: 300,
-		filebrowserBrowseUrl: 'http://localhost:8888/index.cfm/cbadmin/ckfilebrowser/',
-		baseHref: 'http://localhost:8888//'
+		filebrowserBrowseUrl: '#event.buildLink("cbadmin/ckfilebrowser")#',
+		baseHref: '#event.buildLink('')#'
 	});
 	// Active Thumb
 	$thumb.ckeditor(function(){}, {
 		toolbar: ckImageOnlyToolbar,
 		toolbarCanCollapse: true,
 		height: 150,
-		filebrowserBrowseUrl: 'http://localhost:8888/index.cfm/cbadmin/ckfilebrowser/',
-		baseHref: 'http://localhost:8888//'
+		filebrowserBrowseUrl: '#event.buildLink("cbadmin/ckfilebrowser")#',
+		baseHref: '#event.buildLink('')#'
 	});
 	// get editors content
 	$('##submit').hover(function() {
