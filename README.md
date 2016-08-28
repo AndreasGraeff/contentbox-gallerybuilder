@@ -1,8 +1,8 @@
 # contentbox-gallerybuilder
 
-## Version 1.0.3
+## Version 1.0.4
 
-contentbox-gallerybuilder is a module for ContentBox 2.1, the ColdFusion based Content Management System. Actual it does not run on ContentBox 3.x, due to major API changes.
+contentbox-gallerybuilder is a module for ContentBox 2.1, the ColdFusion based Content Management System. **Actual it does not run on ContentBox 3.x**, due to major API changes.
 
 You can create image galleries with it. These galleries are automatically pagenated and they also include support for a "Lightbox" view of an image.
 
